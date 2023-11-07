@@ -1,2 +1,2 @@
 # mt-akar.github.io
-Pages repo
+Pages repository
