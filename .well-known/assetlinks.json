@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.parator.parator",
+    "sha256_cert_fingerprints":
+    ["9E:4A:E4:82:83:D9:C6:30:BE:CC:8F:8B:4D:C8:A9:C7:BC:68:CC:42:4A:D1:E3:BE:1A:BE:52:82:28:38:40:FA"]
+  }
+}]
