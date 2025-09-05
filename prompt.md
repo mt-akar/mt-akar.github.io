@@ -1,41 +1,61 @@
-# Dashboard Blueprint (Immersive, Expressive, Non‑standard)
+## 5) Case Study Filmstrip — Compact Infinite Preview
 
-**North Star**
+**Goal:** Fast, snackable showcase that drives to full write-ups.
 
-You are a builder‑leader whose ideas become roadmaps for others. Voice = confident, generous, precise. Visuals = cinematic, kinetic, high‑contrast with vibrant accents.
+**Structure:** Reduced-height **infinite-scroll lane** of preview cards. Each card shows a strong visual + title. On hover: **scroll pauses**, card **grows** slightly, and a short **description paragraph** fades in. Clicking the card opens the relevant anchor on the Projects page.
 
-**UX & Motion Motifs**
+**Interaction & Motion**
 
-- **Parallax** on multiple z‑layers (hero image + floating artifacts).
-- **Deliberate counters** that ease over **5s**
-- **Magnetic hover** and **inertia scroll**; subtle 3D tilts on cards.
-- **Accent palette**: Charcoal #0F1218 base; Electric Cyan (tw cyan-400), Magenta (tw pink-600), Royal Purple (tw violet-600), Metallic Gold (tw yellow-400) (sparingly for highlights).
-- **Typography**: Tall headline (condensed), humanist text.
+- Auto-marquee (infinite loop); `animation-play-state: paused` on hover.
+- Card hover: scale ~1.03, elevate shadow, reveal description (mask → gradient overlay).
+- Entire card is a link to `/projects#<slug>` (examples below).
 
----
+**Cards (6)**
 
-## 2) The Trifecta — AI & Blockchain Expertise • Entrepreneurial Mindset • User Experience Focus
-
-**Goal:** Declare a broader skillset with proof and show how these pillars reinforce each other.
-
-**Structure:** Interactive **equilateral triangle**; each vertex is a pillar card; edges light up on hover; the center reveals an intersection narrative with a dynamic diagram.
-
-**Content per pillar:**
-
-- **AI & Blockchain Expertise:** Machine learning, prompt design, inference, agent tooling, payments rails, protocol design, distributed systems engineering, node running and staking, smart contracts, block data analysis.
+1. **Pathology PDF → Structured Data**
     
-    **Micro‑case:** *Cointribute — non-revenue, non‑custodial donation checkout with tracability and donor voting.*
+    *Visual:* PDF pages morphing into tidy tables/plots.
     
-- **Entrepreneurial Mindset:** In-house entrepreneur, product strategy & roadmapping, go‑to‑market and pricing, measurable business outcomes, hiring for leverage, negotiation and partnerships, risk management and compliance awareness in crypto/fintech, advisory/mentorship, willingness to **co‑found** when mission‑aligned.
+    *Hover description:* AI-assisted pipeline that converts oncology PDFs into validated JSON and instant analytics. Initially constrained to **RTX 2070S** for privacy; later accelerated on on-prem **A100**. Hours of manual review collapse to minutes.
     
-    **Micro‑case:** RPC Studio *— a crypto app platform across **15** blockchains in **3** regions; as the company’s second monetizable product, it secure funding and diversified portfolio.*
+    *Link:* `/projects#pathology-pipeline`
     
-- **User Experience Focus:** Accessibility and clarity first, onboarding that teaches, both beginner and power user friendly design, progressive disclosure, performance budgets, thoughtful microcopy, instrumented usability feedback, and developer experience (DX) treated as UX for engineers.
+2. **InclusAI — Accessibility & Simplification**
     
-    **Micro‑case:** *InclusAI — an accessibility & text‑simplification layer that improves readability and task completion on public websites.*
+    *Visual:* Before/after text clarity with a toggle chip.
     
-- **Intersection (center):** Animated diagram toggles to show how the three pillars converge on reliability, velocity, and human‑centric outcomes (verifiable systems that people actually enjoy using).
-
-**Motion:** Edge‑drawing animation; glowing intersection nodes; mini‑gauges for TPS, p95 latency, and cost per transaction (when relevant).
-
-**Feeling:** Precise, engineered, confident.
+    *Hover description:* Script-injected layer that simplifies language and adds assistive controls for public sites; built to improve comprehension and task completion.
+    
+    *Link:* `/projects#inclusai`
+    
+3. **Cointribute — Programmable Donations**
+    
+    *Visual:* Wallet → escrow timeline → milestone checkmarks.
+    
+    *Hover description:* Fully self-custodial crypto donations with traceability and optional donor voting on milestones—trust you can audit.
+    
+    *Link:* `/projects#cointribute`
+    
+4. **Web3 Studio — C# SDK for EVM**
+    
+    *Visual:* Typed C# code snippet alongside chain icons.
+    
+    *Hover description:* Open-source toolkit for off-chain EVM workflows (signing, events, calls). Strongly-typed primitives, pragmatic APIs, NuGet-ready.
+    
+    *Link:* `/projects#web3-studio`
+    
+5. **RPC Studio — Multi-Chain Node & RPC Platform**
+    
+    *Visual:* Network map of chains/regions with health badges.
+    
+    *Hover description:* Deployment and lifecycle management at scale—**12k+** VM instances across **26** networks, with automation, monitoring, and security hardening baked in.
+    
+    *Link:* `/projects#rpc-studio`
+    
+6. **Bottom Nav Layout — Flutter Library**
+    
+    *Visual:* Mobile UI with animated bottom navigation patterns.
+    
+    *Hover description:* Eliminates boilerplate for complex nav (state preservation, lazy loading, back-stack). Reached **~82%** popularity on pub.dev.
+    
+    *Link:* `/projects#bottom-nav-layout`

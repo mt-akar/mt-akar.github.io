@@ -54,8 +54,8 @@ export default function Header() {
                             overflow-hidden relative
                             transition-transform duration-300 group-hover:scale-110">
                 <Image 
-                  src="/pictures/mustafa-akar-portrait.webp" 
-                  alt="Mustafa Akar" 
+                  src="/pictures/m-akar-portrait.png"
+                  alt="Mustafa Akar"
                   fill
                   className="object-cover"
                   sizes="48px"

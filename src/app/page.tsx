@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from 'react';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import IdentityChip from '@/components/IdentityChip';
 import TrifectaSection from '@/components/TrifectaSection';
+import SignatureBets from '@/components/SignatureBets';
+import AIEngineSection from '@/components/AIEngineSection';
 import Header from '@/components/Header';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -66,8 +68,8 @@ export default function Home() {
                             overflow-hidden relative">
                 {/* Portrait image - responsive and fills container */}
                 <Image 
-                  src="/pictures/mustafa-akar-portrait.webp" 
-                  alt="Mustafa Akar" 
+                  src="/pictures/m-akar-portrait.png"
+                  alt="Mustafa Akar"
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 288px, 384px"
@@ -171,6 +173,12 @@ export default function Home() {
 
       {/* Trifecta Section */}
       <TrifectaSection />
+
+      {/* Signature Bets Section */}
+      <SignatureBets />
+
+      {/* AI-First Engine Section */}
+      <AIEngineSection />
 
       {/* Additional sections can be added here */}
       <section className="min-h-screen flex items-center justify-center">

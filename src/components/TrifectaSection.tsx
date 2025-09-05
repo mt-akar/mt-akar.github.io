@@ -2,11 +2,12 @@
 
 import { useState, useEffect, useRef } from 'react';
 import PillarCard from './PillarCard';
+import SectionTitle from './SectionTitle';
 
 const pillars = [
   {
     id: 'ai-blockchain',
-    title: 'AI & Blockchain Expertise',
+    title: 'AI & Web3 & Cloud Expertise',
     skills: [
       'Machine Learning',
       'Agent Tooling',
@@ -50,7 +51,7 @@ const pillars = [
   },
   {
     id: 'ux-focus',
-    title: 'User Experience',
+    title: 'User Experience Focus',
     skills: [
       'Feels Natural',
       'Usability Feedback',
@@ -124,13 +125,12 @@ export default function TrifectaSection() {
       </div>
 
       {/* Section Title */}
-      <div className="text-center z-30 mb-8 lg:mb-12">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-          <span className="bg-gradient-to-r from-cyan-400 via-violet-500 to-pink-600 bg-clip-text text-transparent">
-            Personal Trifecta
-          </span>
-        </h2>
-        <p className="text-gray-400 text-base lg:text-lg">Three pillars of my expertise</p>
+      <div className="relative z-30">
+        <SectionTitle 
+          title="Personal Trifecta"
+          subtitle="Where Experience Converges into Impact"
+          isInView={isInView}
+        />
       </div>
 
       {/* Mobile: Sequential Layout */}

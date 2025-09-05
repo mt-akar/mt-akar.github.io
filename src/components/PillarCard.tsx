@@ -64,7 +64,7 @@ export default function PillarCard({
         }}
       >
         {/* Title */}
-        <h3 className={`text-xl font-bold mb-4 transition-colors duration-300 ${
+        <h3 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${
           isActive 
             ? 'bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent' 
             : 'text-gray-300'
