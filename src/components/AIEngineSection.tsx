@@ -35,9 +35,9 @@ const stages = [
 const ecosystems = [
   { name: 'OpenAI', icon: '/icons/openai.svg', x: 15, y: 20, size: 'lg', filter: 'brightness-0 invert' },
   { name: 'Claude', icon: '/icons/claude.svg', x: 75, y: 15, size: 'xl', filter: 'none' },
-  { name: 'Qwen', icon: '/icons/qwen.svg', x: 45, y: 35, size: 'lg', filter: 'none' },
-  { name: 'DeepSeek', icon: '/icons/deepseek.svg', x: 25, y: 60, size: 'md', filter: 'none' },
-  { name: 'Gemini', icon: '/icons/gemini.svg', x: 60, y: 55, size: 'md', filter: 'none' },
+  { name: 'Qwen', icon: '/icons/qwen.svg', x: 45, y: 50, size: 'lg', filter: 'none' },
+  { name: 'DeepSeek', icon: '/icons/deepseek.svg', x: 25, y: 90, size: 'md', filter: 'none' },
+  { name: 'Gemini', icon: '/icons/gemini.svg', x: 60, y: 85, size: 'md', filter: 'none' },
   { name: 'Ollama', icon: '/icons/ollama.svg', x: 85, y: 45, size: 'lg', filter: 'brightness-0 invert' }
 ];
 
@@ -98,7 +98,7 @@ export default function AIEngineSection() {
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-screen py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-black via-[#0A0F1B] to-black"
+      className="relative lg:py-24 overflow-hidden bg-gradient-to-b from-black via-[#0A0F1B] to-black"
     >
       {/* Animated background grid */}
       <div className="absolute inset-0 opacity-20">
@@ -189,10 +189,10 @@ export default function AIEngineSection() {
         </div>
 
         {/* Ecosystem cloud */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 mt-16">
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 mt-12">
           <div 
             className={`
-              relative h-64 lg:h-80
+              relative h-48 lg:h-64
               ${isInView ? 'opacity-100' : 'opacity-0'}
             `}
             style={{

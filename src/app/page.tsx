@@ -6,6 +6,7 @@ import IdentityChip from '@/components/IdentityChip';
 import TrifectaSection from '@/components/TrifectaSection';
 import SignatureBets from '@/components/SignatureBets';
 import AIEngineSection from '@/components/AIEngineSection';
+import CaseStudyFilmstrip from '@/components/CaseStudyFilmstrip';
 import Header from '@/components/Header';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -179,6 +180,9 @@ export default function Home() {
 
       {/* AI-First Engine Section */}
       <AIEngineSection />
+
+      {/* Case Study Filmstrip Section */}
+      <CaseStudyFilmstrip />
 
       {/* Additional sections can be added here */}
       <section className="min-h-screen flex items-center justify-center">

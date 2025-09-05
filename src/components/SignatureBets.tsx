@@ -55,7 +55,7 @@ export default function SignatureBets() {
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-screen py-20 lg:py-32 px-6 sm:px-12 lg:px-20 overflow-hidden"
+      className="relative py-8 lg:py-16 px-6 sm:px-12 lg:px-20 overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
       
