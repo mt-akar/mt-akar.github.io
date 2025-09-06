@@ -12,7 +12,7 @@ const caseStudies = [
       type: 'gradient',
       colors: 'from-emerald-600 to-teal-600'
     },
-    description: 'AI-assisted pipeline that converts oncology PDFs into validated JSON and instant analytics. Initially constrained to RTX 2070S for privacy; later accelerated on on-prem A100. Hours of manual review collapse to minutes.',
+    description: 'AI-assisted pipeline that converts oncology PDFs into structured data and instant analytics. Constrained to onsite AI inference due to high privacy requirements.',
     link: '/projects#pathology-ai'
   },
   {
@@ -23,18 +23,18 @@ const caseStudies = [
       type: 'gradient',
       colors: 'from-blue-600 to-indigo-600'
     },
-    description: 'Script-injected layer that simplifies language and adds assistive controls for public sites; built to improve comprehension and task completion.',
+    description: 'Script-injected plugin that simplifies language and adds assistive controls for websites. Built to improve comprehension and task completion.',
     link: '/projects#inclusai'
   },
   {
     id: 'cointribute',
     title: 'Cointribute',
-    subtitle: 'Non-custodial crypto donations platform',
+    subtitle: 'Self-custodial crypto donations platform',
     visual: {
       type: 'gradient',
       colors: 'from-violet-600 to-purple-600'
     },
-    description: 'Fully self-custodial crypto donations with traceability and optional donor voting on milestones—trust you can audit.',
+    description: 'Non-revenue, self-custodial crypto donations platform with full traceability and optional donor voting on milestones.',
     link: '/projects#cointribute'
   },
   {
@@ -45,7 +45,7 @@ const caseStudies = [
       type: 'gradient',
       colors: 'from-orange-600 to-red-600'
     },
-    description: 'Open-source toolkit for off-chain EVM workflows (signing, events, calls). Strongly-typed primitives, pragmatic APIs, NuGet-ready.',
+    description: 'Open-source NuGet package for EVM interactions such as reading block data, signing txs, events handling .',
     link: '/projects#web3-studio'
   },
   {
@@ -56,7 +56,7 @@ const caseStudies = [
       type: 'gradient',
       colors: 'from-cyan-600 to-blue-600'
     },
-    description: 'Deployment and lifecycle management at scale—12k+ VM instances across 26 networks, with automation, monitoring, and security hardening baked in.',
+    description: 'RPC provider and crypto data indexing for 15+ blockchains in 3 geolocations. As the company\'s second monetizable product, diversified income and helped secure funding.',
     link: '/projects#rpc-studio'
   },
   {

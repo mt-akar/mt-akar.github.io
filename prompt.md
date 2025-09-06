@@ -1,12 +1,9 @@
-## 6) MAOS - Operating System (How I Work)
+## 7) Architecture Sketchpad (Interactive)
 
-**Goal:** Share principles and rhythms, not tools for their own sake.
+**Goal:** Let visitors play with simplified patterns and infer depth.
 
-**Structure:** Two‑column playbook: **Cadence & Communication** / **Thinking & Records**.
+**Structure:** A mini **draw.io‑style** canvas seeded with a tiny diagram (3–4 boxes). The canvas supports exactly these actions: *add box, edit text in box, move box, delete box, create directed arrow between two boxes, delete arrow*.
 
-**Content:**
+**Behavior:** On load, randomly pick one of the following sector‑accepted patterns: *event sourcing*, *CQRS*, *saga orchestration*, *circuit breaker*, *fan‑out/fan‑in*. None are from past proprietary work.
 
-- **Async by default; transparent by design.** I favor written decisions and make space for deep work.
-- **Open door.** No one should feel daunted to reach out—clarity beats ceremony.
-- **Notes → Processes → Policy.** I route ideas through a simple pipeline so good patterns stick.
-- **Systems over heroics.** I design for rollback, audit, and graceful failure.
+**Motion:** Lines draw with a slight ease; nodes magnetically snap to a grid.

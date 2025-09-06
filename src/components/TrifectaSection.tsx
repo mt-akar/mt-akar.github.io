@@ -22,7 +22,7 @@ const pillars = [
     ],
     microCase: {
       title: 'Cointribute',
-      description: 'Non-revenue, non-custodial donation checkout with traceability and donor voting.'
+      description: 'Non-revenue, self-custodial donation checkout with traceability and donor voting.'
     },
     position: 'top' as const,
     accentColor: 'cyan-400'

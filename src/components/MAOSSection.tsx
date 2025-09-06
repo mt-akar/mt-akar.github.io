@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import SectionTitle from './SectionTitle';
 
 const principles = [
@@ -195,6 +196,26 @@ export default function MAOSSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Contact CTA */}
+        <div 
+          className={`mt-16 text-center ${isInView ? 'opacity-100' : 'opacity-0'}`}
+          style={{
+            transform: isInView ? 'translate3d(0, 0, 0)' : 'translate3d(0, 2rem, 0)',
+            transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.8s'
+          }}
+        >
+          <div className="inline-flex flex-col items-center gap-4">
+            <p className="text-gray-400 text-lg">Like my approach?</p>
+            <Link 
+              href="/contact"
+              className="group relative px-8 py-3 bg-gradient-to-r from-cyan-400 to-violet-600 rounded-full font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]"
+            >
+              <span className="relative z-10">Let's work together</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </Link>
+          </div>
         </div>
 
       </div>
