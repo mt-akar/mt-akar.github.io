@@ -10,6 +10,7 @@ import CaseStudyFilmstrip from '@/components/CaseStudyFilmstrip';
 import MAOSSection from '@/components/MAOSSection';
 import ArchitectureSketchpad from '@/components/ArchitectureSketchpad';
 import ToolboxSection from '@/components/ToolboxSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import Header from '@/components/Header';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -195,6 +196,9 @@ export default function Home() {
 
       {/* Toolbox Section */}
       <ToolboxSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Additional sections can be added here */}
       <section className="min-h-screen flex items-center justify-center">
