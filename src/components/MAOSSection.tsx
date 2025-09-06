@@ -107,12 +107,12 @@ export default function MAOSSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
         <SectionTitle 
           title="MAOS"
-          subtitle="My open-source operating system"
+          subtitle="Mustafa Akar operating system, open-source"
           isInView={isInView}
         />
 
         {/* Two-column grid */}
-        <div 
+        <div
           className={`
             grid lg:grid-cols-2 gap-12 lg:gap-16 mt-16
             ${isInView ? 'opacity-100' : 'opacity-0'}

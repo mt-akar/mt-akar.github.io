@@ -6,11 +6,13 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
-  { label: 'Dashboard', href: '/' },
   { label: 'Work', href: '/work' },
+  { label: 'Education', href: '/education' },
   { label: 'Projects', href: '/projects' },
   { label: 'Voluntary', href: '/voluntary' },
   { label: 'Certificates', href: '/certificates' },
+  { label: 'Speaking', href: '/speaking' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Header() {

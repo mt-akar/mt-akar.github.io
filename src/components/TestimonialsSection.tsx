@@ -30,7 +30,7 @@ const testimonials: Testimonial[] = [
     company: "Growth Stage Startup"
   },
   {
-    quote: "The only person I've seen who can talk crypto economics with finance guys and memory layouts with engineers—in the same meeting.",
+    quote: "The only person I've seen who can talk tokenomics with CFO, session-enabled load balancers with engineers, and go-to-market strategy with sales in, the same meeting.",
     author: "Craig Officer",
     role: "CTO",
     company: "Web3 Platform"

@@ -1,12 +1,5 @@
-## 9) Testimonials & Proof
+## 10) Contact / CTA (Final)
 
-**Goal:** External validation, tastefully presented.
+**Goal:** Convert interest into action.
 
-**Structure:** Rotating quotes with placeholder headshots.
-
-**Placeholders:**
-
-- *“When things got complex, Mustafa made reliability feel boring—and that’s a superpower.”* — **Head of Infra**, placeholder
-- *“He turns ambiguous problems into diagrams you can ship.”* — **Product Lead**, placeholder
-- *“Speed with safety. We moved faster and slept better.”* — **Founder**, placeholder
-- *“The only person I’ve seen who can talk crypto economics with finance and memory layouts with engineers—in the same meeting.”* — **CTO**, placeholder
+**Structure:** Bold card with two primary paths: **Build together** (advisory/consult) • **Invite to speak**. Form + simple scheduler + encrypted contact.
