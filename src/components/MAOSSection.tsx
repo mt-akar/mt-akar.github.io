@@ -28,6 +28,11 @@ const principles = [
         description: 'I actively seek constructive criticism and welcome candid perspectives.',
         icon: '/icons/feedback.svg'
       },
+      {
+        title: 'Default to clarity',
+        description: 'Be articulate while expressing yourself. I avoid assuming or auto-completing to ensure correctness.',
+        icon: '/icons/clarity.svg'
+      },
     ]
   },
   {
@@ -52,6 +57,11 @@ const principles = [
         title: 'Hyper-focus blocks',
         description: 'I power zero-distraction work sessions. Complex problems need uninterrupted attention. Async communication is always online.',
         icon: '/icons/focus.svg'
+      },
+      {
+        title: 'Automate the boring',
+        description: 'I actively seek the repetitive tasks and automate them for the team, shifting focus to creative and meaningful work.',
+        icon: '/icons/automate.svg'
       },
     ]
   }
@@ -128,7 +138,7 @@ export default function MAOSSection() {
               </h3>
 
               {/* Principles in this category */}
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {column.items.map((item, itemIndex) => {
                   const uniqueId = `${colIndex}-${itemIndex}`;
                   const isHovered = hoveredIndex === uniqueId;
@@ -160,21 +170,21 @@ export default function MAOSSection() {
                       />
 
                       {/* Content */}
-                      <div className="relative p-6 flex gap-4">
+                      <div className="relative p-4 flex gap-3">
                         {/* Icon placeholder */}
                         <div 
-                          className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-400/20 to-violet-600/20 flex items-center justify-center"
+                          className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400/20 to-violet-600/20 flex items-center justify-center"
                           style={{
                             transform: isHovered ? 'rotate(5deg) scale(1.1)' : 'rotate(0deg) scale(1)',
                             transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                           }}
                         >
-                          <div className="w-6 h-6 bg-white/20 rounded" />
+                          <div className="w-5 h-5 bg-white/20 rounded" />
                         </div>
 
                         {/* Text content */}
                         <div className="flex-grow">
-                          <h4 className="text-white font-semibold mb-2 text-lg">
+                          <h4 className="text-white font-semibold mb-1.5 text-lg">
                             {item.title}
                           </h4>
                           <p className="text-gray-400 text-sm leading-relaxed">
