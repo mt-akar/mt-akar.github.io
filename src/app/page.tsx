@@ -7,6 +7,7 @@ import TrifectaSection from '@/components/TrifectaSection';
 import SignatureBets from '@/components/SignatureBets';
 import AIEngineSection from '@/components/AIEngineSection';
 import CaseStudyFilmstrip from '@/components/CaseStudyFilmstrip';
+import MAOSSection from '@/components/MAOSSection';
 import Header from '@/components/Header';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -183,6 +184,9 @@ export default function Home() {
 
       {/* Case Study Filmstrip Section */}
       <CaseStudyFilmstrip />
+
+      {/* MAOS Section */}
+      <MAOSSection />
 
       {/* Additional sections can be added here */}
       <section className="min-h-screen flex items-center justify-center">
