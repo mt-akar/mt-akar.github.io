@@ -126,13 +126,14 @@ const toolGroups: ToolGroup[] = [
     tools: [
       { name: 'OpenAI', iconName: 'openai' },
       { name: 'Anthropic', iconName: 'anthropic' },
+      { name: 'Gemini', iconName: 'gemini' },
       { name: 'Claude', iconName: 'claude' },
-      { name: 'Llama', iconName: 'llama' },
+      { name: 'Qwen', iconName: 'qwen' },
       { name: 'DeepSeek', iconName: 'deepseek' },
+      { name: 'Llama', iconName: 'meta' },
+      { name: 'Copilot', iconName: 'copilot' },
       { name: 'Ollama', iconName: 'ollama' },
       { name: 'CUDA', iconName: 'cuda' },
-      { name: 'LangChain', iconName: 'langchain' },
-      { name: 'LlamaIndex', iconName: 'llamaindex' }
     ],
     color: 'from-teal-400 to-cyan-600'
   }
@@ -223,30 +224,13 @@ export default function ToolboxSection() {
     <section 
       id="toolbox"
       ref={sectionRef}
-      className="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-black via-[#0A0818] to-black"
+      className="relative py-12 lg:py-20 overflow-hidden bg-gradient-to-b from-black via-[#0A0818] to-black"
     >
-      <div className="absolute inset-0 opacity-20">
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-white animate-pulse"
-            style={{
-              width: Math.random() * 2 + 'px',
-              height: Math.random() * 2 + 'px',
-              left: Math.random() * 100 + '%',
-              top: Math.random() * 100 + '%',
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${Math.random() * 3 + 2}s`
-            }}
-          />
-        ))}
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
         <div 
           className="relative mx-auto"
           style={{
-            height: '900px',
+            height: '700px',
             width: '100%',
             maxWidth: '900px',
             perspective: '1000px',

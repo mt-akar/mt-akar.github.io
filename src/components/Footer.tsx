@@ -138,17 +138,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        {/* Back to Top Button */}
-        <div className="mt-8 text-center">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-2"
-          >
-            <span>Back to top</span>
-            <span className="rotate-[-90deg]">→</span>
-          </button>
-        </div>
       </div>
     </footer>
   );

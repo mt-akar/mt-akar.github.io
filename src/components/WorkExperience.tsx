@@ -115,37 +115,35 @@ export default function WorkExperience() {
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-l from-pink-600/10 to-yellow-400/10 rounded-full blur-3xl" />
       </div>
 
-      <motion.div 
-        ref={containerRef}
-        style={{ opacity, scale }}
-        className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"
-      >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-16 lg:mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
           >
             <span className="bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 bg-clip-text text-transparent">
-              Career Journey
+              Work Experience
             </span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
-            Building the future of decentralized infrastructure and blockchain technology
+            Building the future of decentralized infrastructure and artificial intelligence
           </motion.p>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
+        {/* Timeline with scroll transforms */}
+        <motion.div 
+          ref={containerRef}
+          style={{ opacity, scale }}
+          className="relative"
+        >
           {/* Vertical Line */}
           <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-cyan-400/20 via-violet-600/20 to-pink-600/20" />
 
@@ -155,8 +153,8 @@ export default function WorkExperience() {
               <ExperienceCard key={index} experience={exp} index={index} />
             ))}
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   )
 }
