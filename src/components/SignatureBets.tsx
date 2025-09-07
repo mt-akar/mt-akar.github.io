@@ -25,7 +25,7 @@ const bets = [
   },
   {
     title: "AI Agents will use crypto more than humans.",
-    description: "As the next generation of money is evolving, the next generation money users have arrived: AI Agents. Get used to AI agents that managing budgets, auto approving spending aligned with larger goals, and making micro transactions between each other with a volume 100x of humans.",
+    description: "As the next generation of money is evolving, the next generation money users have arrived: AI Agents. Get used to AI agents managing budgets, auto approving spending aligned with larger goals, and making micro transactions between each other with a volume 100x of humans.",
     myApproach: "I AI-agent-proof all my software projects.",
     callToAction: "Learn about AI and blockchain before it's too late."
   }

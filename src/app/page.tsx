@@ -126,10 +126,10 @@ export default function Home() {
                 </Link>
                 
                 <Link 
-                  href="/work"
+                  href="/experience"
                   className="px-8 py-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                 >
-                  See my work
+                  See my work experience
                 </Link>
               </div>
               
