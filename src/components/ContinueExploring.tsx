@@ -180,5 +180,9 @@ export const continueExploringPresets = {
   certificates: {
     subtitle: undefined,
     cardIds: ['education', 'projects', 'voluntary'] as CardId[]
+  },
+  projects: {
+    subtitle: 'Explore more of my journey',
+    cardIds: ['skills', 'experience', 'voluntary'] as CardId[]
   }
 }
