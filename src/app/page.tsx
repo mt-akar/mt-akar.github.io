@@ -8,7 +8,7 @@ import SignatureBets from '@/components/SignatureBets';
 import AIEngineSection from '@/components/AIEngineSection';
 import CaseStudyFilmstrip from '@/components/CaseStudyFilmstrip';
 import MAOSSection from '@/components/MAOSSection';
-import ArchitectureSketchpad from '@/components/ArchitectureSketchpad';
+import ImpactArchitecture from '@/components/ImpactArchitecture';
 import ToolboxSection from '@/components/ToolboxSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
@@ -193,8 +193,8 @@ export default function Home() {
       {/* MAOS Section */}
       <MAOSSection />
 
-      {/* Architecture Sketchpad Section */}
-      <ArchitectureSketchpad />
+      {/* Impact Architecture Section */}
+      <ImpactArchitecture />
 
       {/* Toolbox Section */}
       <ToolboxSection />

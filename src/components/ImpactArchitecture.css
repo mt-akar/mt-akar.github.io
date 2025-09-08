@@ -1,0 +1,430 @@
+/* High-performance Impact Architecture styles with GPU acceleration */
+
+/* Container styles with render isolation */
+.impact-section {
+  position: relative;
+  padding: 5rem 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #000000, #0A0515, #000000);
+  contain: layout style paint;
+  will-change: auto;
+}
+
+@media (min-width: 1024px) {
+  .impact-section {
+    padding: 8rem 0;
+  }
+}
+
+/* Optimized background gradient */
+.background-gradient {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.gradient-layer {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--story-color) 20%, transparent) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(124, 58, 237, 0.2) 0%, transparent 50%);
+  transform: translate3d(0, 0, 0);
+  will-change: background-image;
+  transition: background-image 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Content container */
+.content-container {
+  position: relative;
+  z-index: 10;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .content-container {
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-container {
+    padding: 0 5rem;
+  }
+}
+
+/* Story selector with load animation */
+.story-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.story-selector.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.story-nav-button {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.2s;
+  transform: translate3d(0, 0, 0) scale(0);
+  will-change: transform, background-color;
+  border: none;
+  color: white;
+  cursor: pointer;
+  animation: buttonPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.story-selector.in-view .story-nav-button:first-child {
+  animation-delay: 0.4s;
+}
+
+.story-selector.in-view .story-nav-button:last-child {
+  animation-delay: 0.6s;
+}
+
+.story-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translate3d(0, 0, 0) scale(1.05);
+}
+
+.story-info {
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.story-selector.in-view .story-info {
+  animation-delay: 0.5s;
+}
+
+@keyframes buttonPop {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate3d(0, 0, 0) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.story-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.story-counter {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0.25rem 0 0 0;
+}
+
+/* Visualization canvas with GPU acceleration */
+.visualization-canvas {
+  position: relative;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  transform: translate3d(0, 2rem, 0);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+  contain: layout style paint;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.visualization-canvas.in-view {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+/* Animation area */
+.animation-area {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 5rem;
+  overflow: hidden;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  contain: layout style paint;
+  will-change: contents;
+  transform: translateZ(0);
+}
+
+/* Phase text with timeline-based animations */
+.phase-text-timeline {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .phase-text-timeline {
+    font-size: 5rem;
+  }
+}
+
+
+/* Progress controls */
+.progress-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  contain: layout style paint;
+  transform: translateZ(0);
+  will-change: auto;
+}
+
+/* Progress bar container */
+.progress-bar-container {
+  padding: 1rem 1.5rem 0.75rem;
+}
+
+.progress-segments-wrapper {
+  position: relative;
+}
+
+.progress-segments {
+  display: flex;
+  gap: 0.25rem;
+  height: 0.75rem;
+}
+
+.segment-background {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.125rem;
+  transform: translateZ(0);
+}
+
+.progress-segments-fill {
+  position: absolute;
+  inset: 0;
+}
+
+/* Progress segment with GPU acceleration */
+.progress-segment {
+  flex: 1;
+  border-radius: 0.125rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  transform: translateZ(0);
+  will-change: auto;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.progress-segment:hover {
+  opacity: 0.9;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 0.125rem;
+  width: var(--segment-width);
+  background-color: var(--segment-color);
+  opacity: var(--segment-opacity);
+  transform: translate3d(0, 0, 0);
+  will-change: width;
+  transition: width 100ms linear;
+}
+
+/* Segment dividers */
+.segment-dividers {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 0.25rem;
+  pointer-events: none;
+}
+
+.divider-container {
+  flex: 1;
+  position: relative;
+}
+
+.segment-divider {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+/* Stage labels */
+.stage-labels {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.stage-label {
+  flex: 1;
+  font-size: 1rem;
+  text-transform: capitalize;
+  cursor: pointer;
+  color: var(--label-color);
+  opacity: 0.6;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  will-change: color, opacity, transform;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+.stage-label:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.stage-label.active {
+  opacity: 1;
+  font-weight: 500;
+  transform: translateY(-2px);
+}
+
+/* Play controls */
+.play-controls {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.play-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate3d(0, 0, 0) scale(1);
+  will-change: transform, background-color;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.play-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translate3d(0, 0, 0) scale(1.1);
+}
+
+.play-button:active {
+  transform: translate3d(0, 0, 0) scale(0.95);
+}
+
+.play-icon {
+  margin-left: 0.125rem;
+}
+
+/* Icon color fix */
+.play-button svg {
+  color: white;
+}
+
+/* Performance optimizations for high-DPI displays */
+@media (min-resolution: 2dppx) {
+  .phase-title {
+    image-rendering: high-quality;
+    text-rendering: geometricPrecision;
+  }
+  
+  .visualization-canvas {
+    transform-style: preserve-3d;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .phase-title,
+  .progress-fill,
+  .visualization-canvas,
+  .pause-overlay,
+  .play-button,
+  .story-nav-button,
+  .stage-label {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Force hardware acceleration on mobile */
+@media (max-width: 768px) {
+  .visualization-canvas,
+  .animation-area,
+  .phase-display-container,
+  .phase-title {
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+  }
+}

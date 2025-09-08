@@ -6,6 +6,7 @@ import SectionTitle from './SectionTitle';
 interface Tool {
   name: string;
   iconName: string;
+  iconExt?: string;
 }
 
 interface ToolGroup {
@@ -53,25 +54,35 @@ const toolGroups: ToolGroup[] = [
     category: 'Web3',
     tools: [
       { name: 'Solidity', iconName: 'solidity' },
-      { name: 'EVM', iconName: 'evm' },
+      { name: 'EVM', iconName: 'ethereum' },
+      { name: 'Tether', iconName: 'tether' },
+      { name: 'USDC', iconName: 'usdc' },
       { name: 'Hardhat', iconName: 'hardhat' },
-      { name: 'Foundry', iconName: 'foundry' },
+      { name: 'Foundry', iconName: 'foundry', iconExt: 'png' },
       { name: 'ethers.js', iconName: 'ethersjs' },
-      { name: 'web3.js', iconName: 'web3js' }
+      { name: 'web3.js', iconName: 'web3js' },
+      { name: 'Chainlink', iconName: 'chainlink' },
+      { name: 'Open Zeppelin', iconName: 'open-zeppelin' },
+      { name: 'Aave', iconName: 'aave' },
+      { name: 'Metamask', iconName: 'metamask' },
     ],
     color: 'from-green-400 to-emerald-600'
   },
   {
     category: 'Blockchains',
     tools: [
+      { name: 'Bitcoin', iconName: 'bitcoin' },
       { name: 'Ethereum', iconName: 'ethereum' },
-      { name: 'Binance', iconName: 'binance-chain' },
+      { name: 'Solana', iconName: 'solana' },
+      { name: 'Binance Chain', iconName: 'bnb' },
       { name: 'Polygon', iconName: 'polygon' },
       { name: 'Arbitrum', iconName: 'arbitrum' },
       { name: 'Avalanche', iconName: 'avalanche' },
       { name: 'Base', iconName: 'base' },
       { name: 'Fantom', iconName: 'fantom' },
       { name: 'Optimism', iconName: 'optimism' },
+      { name: 'Tron', iconName: 'tron' },
+      { name: 'Sui', iconName: 'sui' },
       { name: 'Pocket', iconName: 'pocket-network' }
     ],
     color: 'from-yellow-400 to-orange-600'
@@ -102,7 +113,6 @@ const toolGroups: ToolGroup[] = [
       { name: 'YAML', iconName: 'yaml' },
       { name: 'Jira', iconName: 'jira' },
       { name: 'Azure DevOps', iconName: 'azure-devops' },
-      { name: 'Jetbrains Space', iconName: 'jetbrains-space' },
     ],
     color: 'from-red-400 to-pink-600'
   },
@@ -133,7 +143,7 @@ const toolGroups: ToolGroup[] = [
       { name: 'Llama', iconName: 'meta' },
       { name: 'Copilot', iconName: 'copilot' },
       { name: 'Ollama', iconName: 'ollama' },
-      { name: 'CUDA', iconName: 'cuda' },
+      { name: 'CUDA', iconName: 'nvidia' },
     ],
     color: 'from-teal-400 to-cyan-600'
   }
@@ -332,7 +342,7 @@ export default function ToolboxSection() {
                                     }}
                                   >
                                     <img 
-                                      src={`/icons/${tool.iconName}.svg`}
+                                      src={`/icons/${tool.iconName}.${tool.iconExt || 'svg'}`}
                                       alt={tool.name}
                                       className="w-full h-full object-contain"
                                     />

@@ -195,7 +195,7 @@ export default function CaseStudyFilmstrip() {
               transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
           >
-            Recent Work
+            Recent Projects
           </h2>
         </div>
 

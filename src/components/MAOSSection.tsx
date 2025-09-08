@@ -222,7 +222,7 @@ export default function MAOSSection() {
               href="/contact"
               className="group relative px-8 py-3 bg-gradient-to-r from-cyan-400 to-violet-600 rounded-full font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]"
             >
-              <span className="relative z-10">Let's work together</span>
+              <span className="relative z-10">Let's Work Together</span>
               <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
           </div>

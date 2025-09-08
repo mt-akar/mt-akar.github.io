@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { RefreshCw } from 'lucide-react';
+import SectionTitle from './SectionTitle';
 
 interface Node {
   id: string;
@@ -272,6 +274,7 @@ export default function ArchitectureSketchpad() {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [arrowStart, setArrowStart] = useState<string | null>(null);
   const [currentPattern, setCurrentPattern] = useState('');
+  const [currentPatternIndex, setCurrentPatternIndex] = useState(0);
   const [addNodeSlot, setAddNodeSlot] = useState(0);
   const [isCanvasDragging, setIsCanvasDragging] = useState(false);
   const [canvasDragStart, setCanvasDragStart] = useState({ x: 0, scrollLeft: 0 });
@@ -281,29 +284,33 @@ export default function ArchitectureSketchpad() {
   // Snap to grid
   const snapToGrid = (value: number) => Math.round(value / GRID_SIZE) * GRID_SIZE;
 
-  // Load random pattern
-  const loadRandomPattern = useCallback(() => {
+  // Load next pattern in cycle
+  const loadNextPattern = useCallback(() => {
     const patternKeys = Object.keys(patterns);
-    let randomPattern: keyof typeof patterns;
+    const nextIndex = (currentPatternIndex + 1) % patternKeys.length;
+    const patternKey = patternKeys[nextIndex] as keyof typeof patterns;
     
-    // Ensure we don't repeat the same pattern
-    do {
-      randomPattern = patternKeys[Math.floor(Math.random() * patternKeys.length)] as keyof typeof patterns;
-    } while (patternKeys.length > 1 && patterns[randomPattern].name === currentPattern);
-    
-    const pattern = patterns[randomPattern];
+    const pattern = patterns[patternKey];
     setNodes([...pattern.nodes]);
     setArrows([...pattern.arrows]);
     setCurrentPattern(pattern.name);
+    setCurrentPatternIndex(nextIndex);
     setSelectedNode(null);
     setEditingNode(null);
     setArrowStart(null);
     setAddNodeSlot(0); // Reset the add node position
-  }, [currentPattern]);
+  }, [currentPatternIndex]);
 
   // Initialize with random pattern
   useEffect(() => {
-    loadRandomPattern();
+    const patternKeys = Object.keys(patterns);
+    const randomIndex = Math.floor(Math.random() * patternKeys.length);
+    const randomPatternKey = patternKeys[randomIndex] as keyof typeof patterns;
+    const pattern = patterns[randomPatternKey];
+    setNodes([...pattern.nodes]);
+    setArrows([...pattern.arrows]);
+    setCurrentPattern(pattern.name);
+    setCurrentPatternIndex(randomIndex);
   }, []);
 
   // Intersection observer
@@ -697,18 +704,11 @@ export default function ArchitectureSketchpad() {
             transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s'
           }}
         >
-          <div className="flex items-center gap-4">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-            <div className="text-center">
-              <h3 className="text-2xl lg:text-4xl font-medium text-white/70 mb-1">
-                Architecture Playground
-              </h3>
-              <p className="text-base lg:text-lg text-gray-500">
-              Check out the architectural patterns I applied on my real life projects.<br />You can modify and export them too!
-              </p>
-            </div>
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          </div>
+          <SectionTitle 
+            title="Proven Architectures"
+            subtitle="Check out the architectural patterns I applied on real life projects. You can modify and export them too!"
+            isInView={isInView}
+          />
         </div>
 
         {/* Controls */}
@@ -720,11 +720,12 @@ export default function ArchitectureSketchpad() {
           }}
         >
           <button
-            onClick={loadRandomPattern}
-            className="px-3 sm:px-4 py-2 bg-violet-600/20 hover:bg-violet-600/30 text-violet-400 rounded-lg transition-colors duration-300 text-sm sm:text-base"
+            onClick={loadNextPattern}
+            className="px-3 sm:px-4 py-2 bg-violet-600/20 hover:bg-violet-600/30 text-white rounded-lg transition-colors duration-300 text-sm sm:text-base flex items-center gap-2"
           >
-            <span className="hidden sm:inline">Different diagram</span>
-            <span className="sm:hidden">New</span>
+            <RefreshCw className="w-4 h-4" />
+            <span className="hidden sm:inline">Next diagram</span>
+            <span className="sm:hidden">Next</span>
           </button>
           <button
             onClick={addNode}
