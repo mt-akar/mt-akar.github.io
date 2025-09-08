@@ -10,9 +10,9 @@ export default function Footer() {
       { name: 'Dashboard', href: '/', external: false },
       { name: 'Work', href: '/work', external: false },
       { name: 'Education', href: '/education', external: false },
+      { name: 'Certificates', href: '/certificates', external: false },
       { name: 'Projects', href: '/projects', external: false },
-      { name: 'Voluntary', href: '/voluntary', external: false },
-      { name: 'Certificates', href: '/certificates', external: false }
+      { name: 'Voluntary', href: '/voluntary', external: false }
     ],
     Services: [
       { name: 'Advisory', href: '/services#advisory', external: false },

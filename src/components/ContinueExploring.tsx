@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Briefcase, GraduationCap, Code, Shield, Heart, Rocket, Award } from 'lucide-react'
 
-export type CardId = 'skills' | 'education' | 'projects' | 'certifications' | 'voluntary' | 'experience'
+export type CardId = 'skills' | 'education' | 'projects' | 'certificates' | 'voluntary' | 'experience'
 
 interface CTACard {
   id: CardId
@@ -57,17 +57,17 @@ const allCards: Record<CardId, CTACard> = {
     textColor: 'text-orange-600 dark:text-orange-400',
     linkText: 'View Projects'
   },
-  certifications: {
-    id: 'certifications',
-    href: '/certifications',
+  certificates: {
+    id: 'certificates',
+    href: '/certificates',
     icon: Shield,
-    title: 'Certifications',
-    description: 'Professional credentials and authorizations',
+    title: 'Certificates',
+    description: 'Professional authorizations and achievements',
     gradient: 'from-amber-400/10 to-orange-600/10',
     hoverGradient: 'from-amber-400/20 to-orange-600/20',
     iconColor: 'text-amber-600 dark:text-amber-400',
     textColor: 'text-amber-600 dark:text-amber-400',
-    linkText: 'View Certifications'
+    linkText: 'View Certificates'
   },
   voluntary: {
     id: 'voluntary',
@@ -175,9 +175,9 @@ export const continueExploringPresets = {
   },
   education: {
     subtitle: undefined,
-    cardIds: ['projects', 'certifications', 'voluntary'] as CardId[]
+    cardIds: ['projects', 'certificates', 'voluntary'] as CardId[]
   },
-  certifications: {
+  certificates: {
     subtitle: undefined,
     cardIds: ['education', 'projects', 'voluntary'] as CardId[]
   }

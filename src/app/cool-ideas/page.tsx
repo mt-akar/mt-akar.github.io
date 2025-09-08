@@ -4,10 +4,12 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ArchitectureSketchpad from '@/components/ArchitectureSketchpad';
+import CommandTerminal from '@/components/CommandTerminal';
 import ContinueExploring from '@/components/ContinueExploring';
 
 export default function CoolIdeasPage() {
   const [activeSection, setActiveSection] = useState('architecture');
+  const [showTerminal, setShowTerminal] = useState(false);
 
   const continueExploringPresets = {
     coolIdeas: {
@@ -54,6 +56,16 @@ export default function CoolIdeasPage() {
               Architecture Patterns
             </button>
             <button
+              onClick={() => setActiveSection('terminal')}
+              className={`px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
+                activeSection === 'terminal'
+                  ? 'bg-gradient-to-r from-cyan-400 to-violet-600 text-white'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              Interactive Terminal
+            </button>
+            <button
               onClick={() => setActiveSection('coming-soon')}
               className={`px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
                 activeSection === 'coming-soon'
@@ -71,6 +83,41 @@ export default function CoolIdeasPage() {
       <div className="min-h-[60vh]">
         {activeSection === 'architecture' && (
           <ArchitectureSketchpad />
+        )}
+        
+        {activeSection === 'terminal' && (
+          <section className="py-20 px-6 sm:px-12 lg:px-20">
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-12 text-center">
+                <h2 className="text-3xl font-bold mb-4 text-white">
+                  Interactive Command Terminal
+                </h2>
+                <p className="text-gray-400 text-lg mb-8">
+                  A fun way to explore my background through a terminal interface. 
+                  Type commands to learn more about me!
+                </p>
+                
+                {!showTerminal ? (
+                  <button
+                    onClick={() => setShowTerminal(true)}
+                    className="px-8 py-3 bg-gradient-to-r from-cyan-400 to-violet-600 rounded-full font-semibold text-white hover:scale-105 hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition-all duration-300"
+                  >
+                    Launch Terminal
+                  </button>
+                ) : (
+                  <div className="text-sm text-gray-500">
+                    Terminal is active below. Type 'help' for available commands.
+                  </div>
+                )}
+              </div>
+              
+              {showTerminal && (
+                <div className="relative">
+                  <CommandTerminal />
+                </div>
+              )}
+            </div>
+          </section>
         )}
         
         {activeSection === 'coming-soon' && (
