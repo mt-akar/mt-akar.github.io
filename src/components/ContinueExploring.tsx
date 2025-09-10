@@ -184,5 +184,9 @@ export const continueExploringPresets = {
   projects: {
     subtitle: 'Explore more of my journey',
     cardIds: ['skills', 'experience', 'voluntary'] as CardId[]
+  },
+  coolIdeas: {
+    subtitle: 'Explore more insights and innovations',
+    cardIds: ['projects', 'experience', 'skills'] as CardId[]
   }
 }

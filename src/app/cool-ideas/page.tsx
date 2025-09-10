@@ -5,22 +5,11 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ArchitectureSketchpad from '@/components/ArchitectureSketchpad';
 import CommandTerminal from '@/components/CommandTerminal';
-import ContinueExploring from '@/components/ContinueExploring';
+import ContinueExploring, { continueExploringPresets } from '@/components/ContinueExploring';
 
 export default function CoolIdeasPage() {
   const [activeSection, setActiveSection] = useState('architecture');
   const [showTerminal, setShowTerminal] = useState(false);
-
-  const continueExploringPresets = {
-    coolIdeas: {
-      links: [
-        { text: 'Home', href: '/' },
-        { text: 'Work Experience', href: '/experience' },
-        { text: 'Contact', href: '/contact' },
-        { text: 'Speaking & Press', href: '/speaking' }
-      ]
-    }
-  };
 
   return (
     <div className="min-h-screen bg-[#0F1218] dark:bg-black text-white">
