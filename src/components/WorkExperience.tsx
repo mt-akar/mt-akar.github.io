@@ -35,12 +35,14 @@ const experiences: Experience[] = [
     nonFunctional: ['Technical Leadership', 'DX', 'Robustness', 'System Architecture', 'Observability'],
     metrics: [
       { value: '3', label: 'Projects Owned' },
+      { value: '50+', label: 'Real-time Metrics Maintained' },
+      { value: '1', label: 'SDK Shipped' },
     ]
   },
   {
     role: 'Software Engineer',
     company: 'Time Base Six',
-    product: 'Pocket Network',
+    product: 'C0D3R.org & Pocket Network',
     location: 'Seattle, WA, USA',
     period: '05/2022 - 05/2024',
     logo: '/icons/pocket-network.svg',
@@ -56,8 +58,8 @@ const experiences: Experience[] = [
     tech: ['Blockchain RPC', 'DePIN', 'Cloud', 'SDK Development', 'Linux', 'MongoDB'],
     nonFunctional: ['Scaling', 'Automation', '24/7 Operations', 'Security','Cost Optimization', "In-house Entrepreneurship"],
     metrics: [
-      { value: '26', label: 'Nodes Ran for Different Blockchains' },
-      { value: '12K+', label: 'VMs Managed' },
+      { value: '26', label: 'Blockchain Networks Operated' },
+      { value: '12K+', label: 'Total Nodes Ran' },
       { value: '$10M+', label: 'Assets Operated' },
     ]
   },
@@ -79,21 +81,29 @@ const experiences: Experience[] = [
     metrics: []
   },
   {
-    role: 'Software Engineering Intern',
-    company: 'Atlassian',
-    product: 'Jira',
+    role: 'Co-Founder & Technical Lead',
+    company: 'Albiders',
+    product: 'AI-Powered Education Platform',
     location: 'Ankara, Türkiye',
-    period: '05/2020 - 09/2020',
-    logo: '/icons/atlassian.svg',
+    period: '08/2020 - 05/2021',
+    logo: '/icons/albiders.svg',
     highlights: [
-      'Developed a new feature for Jira Cloud iOS application using Objective-C.',
-      'Collaborated with cross-functional teams to implement user-facing features and improve app performance.',
-      'Participated in structured scrum meetings and code reviews.'
+      'Founded EdTech startup and led cross-functional team of 17 (engineers, designers, educators, content creators) while managing diverse stakeholders from investors to educational specialists.',
+      'Delivered MVP in 8 months by managing 3 freelance engineers through Waterfall methodology, developing backend with ASP.NET, MSSQL, and Azure Web App.',
+      'Expanded platform to mobile by developing native Android app with offline video playback, picture-in-picture mode, and push notifications using Kotlin.',
+      'Eliminated manual test syncing (~3 minutes/test) for students by building a computer vision module using OpenCV and Java to automatically scan and grade papers via mobile camera.',
+      'Established project management and engineering practices using Azure DevOps for requirements tracking, CI/CD pipelines, and automated testing despite challenges with freelancer compliance.',
+      'Written 1200+ pages of comprehensive documentation including proposals, architecture diagrams, requirements, acceptance criteria, design docs, API specs, and deployment guides.',
+      'Successfully negotiated and executed equity sale to co-founder, completing exit after strategic disagreement on product direction.'
     ],
-    languages: ['Objective-C', 'Swift', 'SQL'],
-    tech: ['Git', 'Jira', 'iOS', 'SQLite'],
-    nonFunctional: ['Agile', 'Cross-functional Collaboration', 'Code Review'],
-    metrics: []
+    languages: ['C#', 'Kotlin', 'Java', 'SQL', 'JavaScript'],
+    tech: ['ASP.NET', 'Android', 'OpenCV', 'MSSQL', 'Git', 'Azure DevOps', 'Azure Web App'],
+    nonFunctional: ['Entrepreneurship', 'Computer Vision', 'Freelancer Management', 'Project Management', 'Waterfall', 'Stakeholder Management', 'Exit Execution'],
+    metrics: [
+      { value: '17', label: 'Team Members Led' },
+      { value: '8', label: 'Months to MVP' },
+      { value: '1', label: 'Successful Exit' },
+    ]
   }
 ]
 
@@ -124,7 +134,7 @@ export default function WorkExperience() {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
           >
-            <span className="bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-600 bg-clip-text text-transparent">
               Work Experience
             </span>
           </motion.h2>
@@ -134,7 +144,7 @@ export default function WorkExperience() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
-            Building the future of decentralized infrastructure and artificial intelligence
+            
           </motion.p>
         </div>
 
