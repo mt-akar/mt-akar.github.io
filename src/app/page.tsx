@@ -14,11 +14,13 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import BreakdownModal from '@/components/BreakdownModal';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
+  const [isBreakdownOpen, setIsBreakdownOpen] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -152,31 +154,43 @@ export default function Home() {
             </div>
 
             {/* Telemetry Counters */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 mb-8">
-              <div className="space-y-1">
-                <div className="text-3xl sm:text-4xl font-bold text-cyan-400">
-                  <AnimatedCounter end={4} duration={5000} delay={0} easing="easeInQuad" />
+            <div className="relative">
+              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 mb-8">
+                <div className="space-y-1">
+                  <div className="text-3xl sm:text-4xl font-bold text-cyan-400">
+                    <AnimatedCounter end={5} duration={5000} delay={0} easing="easeInQuad" />
+                  </div>
+                  <p className="text-sm text-gray-500">Years shipping</p>
                 </div>
-                <p className="text-sm text-gray-500">Years shipping</p>
+                
+                <div className="space-y-1">
+                  <div className="text-3xl sm:text-4xl font-bold text-violet-400">
+                    {/* Pathology AI, Cointribute, InclusAI, Coin Checkout, RPC Studio
+                    // Albiders, Test Maker, Habiracker, Bottom Nav Layout
+                    // Date Night, Portfolio
+                    // Roger that, Web3 Studio, Spark, Kinesis Dotnet, Kinesis Explorer
+                    // */}
+                    <AnimatedCounter end={16} duration={5000} delay={300} easing="easeInQuad" />
+                  </div>
+                  <p className="text-sm text-gray-500">Projects spearheaded</p>
+                </div>
+                
+                <div className="space-y-1">
+                  <div className="text-3xl sm:text-4xl font-bold text-pink-400">
+                    <AnimatedCounter end={3.6} decimals={1} duration={5000} delay={600} prefix={'$'} suffix={'M'} easing="easeInQuad" />
+                  </div>
+                  <p className="text-sm text-gray-500">Tangible Value Generated</p>
+                </div>
               </div>
               
-              <div className="space-y-1">
-                <div className="text-3xl sm:text-4xl font-bold text-violet-400">
-                  {/* Pathology AI, Cointribute, InclusAI, Coin Checkout, RPC Studio
-                  // Albiders, Test Maker, Habiracker, Bottom Nav Layout
-                  // Date Night, Portfolio
-                  // Roger that, Web3 Studio, Spark, Kinesis Dotnet, Kinesis Explorer
-                  // */}
-                  <AnimatedCounter end={16} duration={5000} delay={300} easing="easeInQuad" />
-                </div>
-                <p className="text-sm text-gray-500">Projects spearheaded</p>
-              </div>
-              
-              <div className="space-y-1">
-                <div className="text-3xl sm:text-4xl font-bold text-pink-400">
-                  <AnimatedCounter end={1400} duration={5000} delay={600} suffix="+" easing="easeInQuad" />
-                </div>
-                <p className="text-sm text-gray-500">Cloud resources managed</p>
+              {/* Breakdown link */}
+              <div className="text-center">
+                <button 
+                  onClick={() => setIsBreakdownOpen(true)}
+                  className="inline-flex items-center gap-1 px-4 py-2 text-xs text-gray-500 hover:text-cyan-400 transition-colors duration-300 underline underline-offset-2"
+                >
+                  See breakdown
+                </button>
               </div>
             </div>
           </div>
@@ -214,6 +228,12 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Breakdown Modal */}
+      <BreakdownModal 
+        isOpen={isBreakdownOpen} 
+        onClose={() => setIsBreakdownOpen(false)} 
+      />
     </div>
   );
 }

@@ -96,11 +96,18 @@ export default function AnimatedCounter({
     };
   }, [isVisible, end, duration, decimals, delay, easing, onComplete]);
 
-  const displayValue = decimals > 0 ? count.toFixed(decimals) : Math.floor(count).toString();
+  const formatNumber = (num: number): string => {
+    if (decimals > 0) {
+      return num.toFixed(decimals);
+    }
+    return Math.floor(num).toLocaleString('en-US');
+  };
+
+  const displayValue = formatNumber(count);
 
   return (
     <span ref={ref} className="tabular-nums">
-      {prefix}{suffix === 'k' && count >= 100 ? `${(count).toFixed(0)}` : displayValue}{suffix}
+      {prefix}{displayValue}{suffix}
     </span>
   );
 }

@@ -45,7 +45,7 @@ const toolGroups: ToolGroup[] = [
       { name: 'Flutter', iconName: 'flutter' },
       { name: 'Express', iconName: 'express', needsWhite: true },
       { name: 'Angular', iconName: 'angular' },
-      { name: 'ASP.NET', iconName: 'aspnet' },
+      { name: 'ASP.NET', iconName: 'aspdotnet' },
       { name: 'Blazor', iconName: 'blazor' },
       { name: 'MAUI', iconName: 'maui' },
     ],

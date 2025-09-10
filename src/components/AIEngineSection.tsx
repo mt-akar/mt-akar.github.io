@@ -64,37 +64,6 @@ const orchestrationApproach = [
   }
 ];
 
-const clientValue = [
-  {
-    value: 2.5,
-    suffix: 'x',
-    label: 'Senior-Level Productivity',
-    colorClass: 'text-cyan-400',
-    description: 'At architect level - harder than junior boosts'
-  },
-  {
-    value: 16,
-    suffix: '+',
-    label: 'Production Systems Shipped',
-    colorClass: 'text-pink-400',
-    description: 'Mission-critical systems with real users'
-  },
-  {
-    value: 98,
-    suffix: '%',
-    label: 'Faster Analysis (Pathology AI)',
-    colorClass: 'text-violet-400',
-    description: 'Expert-validated diagnostic improvement'
-  },
-  {
-    value: 0,
-    suffix: '',
-    label: 'AI Errors in Production',
-    colorClass: 'text-green-400',
-    description: 'Zero hallucinations shipped to users'
-  }
-];
-
 export default function AIEngineSection() {
   const [isInView, setIsInView] = useState(false);
   const [activeApproach, setActiveApproach] = useState(0);
@@ -284,7 +253,14 @@ export default function AIEngineSection() {
                 `}
               >
                 <div className="flex justify-center mb-4">
-                  <approach.Icon className={`w-8 h-8 ${activeApproach === index ? 'text-cyan-400' : 'text-gray-400'} transition-colors duration-500`} />
+                  <approach.Icon className={`w-8 h-8 ${
+                    activeApproach === index 
+                      ? index === 0 ? 'text-cyan-400' 
+                        : index === 1 ? 'text-pink-600'
+                        : index === 2 ? 'text-violet-600'
+                        : 'text-yellow-400'
+                      : 'text-gray-400'
+                  } transition-colors duration-500`} />
                 </div>
                 <h4 className="font-semibold text-white mb-2 text-center">{approach.title}</h4>
                 <p className="text-sm text-gray-400 leading-relaxed">{approach.description}</p>

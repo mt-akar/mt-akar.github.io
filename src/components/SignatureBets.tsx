@@ -11,19 +11,19 @@ const bets = [
     callToAction: "Orchestrate your agents and own the revolution."
   },
   {
-    title: "VC is a beauty contest",
-    description: "Venture capital turned builders into pitch deck artists. It's like watching Michelangelo spend his days color-matching PowerPoint themes instead of painting the Sistine Chapel. The real impact is built by engineers too busy shipping.",
-    callToAction: "Build something people want, not what VCs want to hear."
-  },
-  {
-    title: "Agile is corporate theater",
-    description: "Agile became the very bureaucracy it was meant to destroy. Sprint planning is a séance where we summon the ghost of productivity. The best teams ship daily and treat production as their retrospective.",
-    callToAction: "Stop planning sprints, start shipping products."
+    title: "Blockchain becomes invisible infrastructure",
+    description: "The revolution already happened, you just didn't notice because you were busy screenshotting NFT apes. Your grandma beat you to Web3.",
+    callToAction: "Build the experience, not the buzzwords."
   },
   {
     title: "You're underusing AI",
     description: "You are leaving massive untapped potential on the table, with varying severity. I am shocked to see this giant wrecking ball used to open nuts, it is nuts.",
     callToAction: "Build AI into the daily loop, not just the sprint planning."
+  },
+  {
+    title: "4-day work week is inevitable",
+    description: "Remember when remote work was 'impossible'? The 4-day week is the same movie, different sequel. The future has two schools of thought: Monday Mikes and Friday Freddies. Pick your poison.",
+    callToAction: "Work smarter, live fuller, ship faster."
   },
 ];
 
