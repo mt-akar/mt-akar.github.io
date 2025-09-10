@@ -128,7 +128,7 @@ export default function TrifectaSection() {
       <div className="relative z-30">
         <SectionTitle 
           title="Personal Trifecta"
-          subtitle="Where Experience Converges into Impact"
+          subtitle="3 Industry Skills To Define Me"
           isInView={isInView}
         />
       </div>
@@ -157,37 +157,6 @@ export default function TrifectaSection() {
             </div>
           ))}
           
-          {/* Convergence Card for Mobile */}
-          <div
-            className={`transition-all duration-700 ${
-              isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-            style={{ transitionDelay: '450ms' }}
-          >
-            <div className="p-6 bg-black/50 backdrop-blur-xl rounded-2xl border border-white/10 opacity-70">
-              <h3 className="text-lg font-semibold mb-2 text-white text-center">
-                Convergence
-              </h3>
-              <p className="text-sm text-gray-400 text-center mb-4">
-                Reliable systems that people enjoy using
-              </p>
-              
-              <div className="grid grid-cols-3 gap-4 text-xs">
-                <div className="text-center">
-                  <div className="text-cyan-400 font-mono text-lg">99.9%</div>
-                  <div className="text-gray-500">Reliability</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-violet-400 font-mono text-lg">10x</div>
-                  <div className="text-gray-500">Velocity</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-pink-400 font-mono text-lg">5★</div>
-                  <div className="text-gray-500">UX Score</div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       ) : (
         /* Desktop: Triangle Layout */
@@ -322,43 +291,6 @@ export default function TrifectaSection() {
             </div>
           </div>
 
-          {/* Center Intersection - positioned at triangle center */}
-          <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
-            <div className={`
-              relative transition-all duration-500 opacity-70
-              ${activePillar ? 'scale-100' : 'scale-95'}
-            `}>
-              {/* Center content */}
-              <div className="p-4 bg-black/50 backdrop-blur-xl rounded-2xl border border-white/10 pointer-events-none">
-                <h3 className="text-sm font-semibold mb-1 text-white text-center">
-                  {activePillar ? 'Convergence' : 'Intersection'}
-                </h3>
-                <p className="text-xs text-gray-400 text-center max-w-[200px]">
-                  {activePillar 
-                    ? 'Reliable systems that people enjoy using'
-                    : 'Hover over a pillar to explore'}
-                </p>
-                
-                {/* Mini gauges */}
-                {activePillar && (
-                  <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
-                    <div className="text-center">
-                      <div className="text-cyan-400 font-mono text-sm">99.9%</div>
-                      <div className="text-gray-500 text-[10px]">Reliability</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-violet-400 font-mono text-sm">10x</div>
-                      <div className="text-gray-500 text-[10px]">Velocity</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-pink-400 font-mono text-sm">5★</div>
-                      <div className="text-gray-500 text-[10px]">UX Score</div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
         </div>
       )}
     </section>

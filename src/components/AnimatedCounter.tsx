@@ -9,6 +9,7 @@ interface AnimatedCounterProps {
   suffix?: string;
   decimals?: number;
   delay?: number;
+  easing?: 'easeOutQuart' | 'easeInQuad';
   onComplete?: () => void;
 }
 
@@ -19,6 +20,7 @@ export default function AnimatedCounter({
   suffix = '',
   decimals = 0,
   delay = 0,
+  easing = 'easeOutQuart',
   onComplete,
 }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
@@ -61,8 +63,16 @@ export default function AnimatedCounter({
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
 
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        const current = Math.floor(easeOutQuart * end * Math.pow(10, decimals)) / Math.pow(10, decimals);
+        let easedProgress: number;
+        if (easing === 'easeInQuad') {
+          // Quadratic easing - starts slow, speeds up
+          easedProgress = progress * progress;
+        } else {
+          // Default easeOutQuart - starts fast, slows down
+          easedProgress = 1 - Math.pow(1 - progress, 4);
+        }
+        
+        const current = Math.floor(easedProgress * end * Math.pow(10, decimals)) / Math.pow(10, decimals);
         
         setCount(current);
 
@@ -84,7 +94,7 @@ export default function AnimatedCounter({
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [isVisible, end, duration, decimals, delay, onComplete]);
+  }, [isVisible, end, duration, decimals, delay, easing, onComplete]);
 
   const displayValue = decimals > 0 ? count.toFixed(decimals) : Math.floor(count).toString();
 

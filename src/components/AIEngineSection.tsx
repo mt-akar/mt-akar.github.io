@@ -118,7 +118,7 @@ export default function AIEngineSection() {
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
           <SectionTitle 
-            title="AI At Work"
+            title="AI In My Work"
             subtitle="My AI-augmented product loop"
             isInView={isInView}
           />

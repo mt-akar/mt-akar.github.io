@@ -6,25 +6,25 @@ import SectionTitle from './SectionTitle';
 
 const bets = [
   {
-    title: "AI won't replace engineers.",
+    title: "AI won't replace engineers",
     description: "Saying 'AI will replace engineers' is like saying a dishwasher will replace Thanksgiving. It may do the cleanup for you but it will not make grandma happy, you will.",
     myApproach: "I orchestrate an AI agent team to supercharge my productivity.",
     callToAction: "Orchestrate your agents and own the revolution."
   },
   {
-    title: "You're underusing AI.",
+    title: "You're underusing AI",
     description: "Everyone is leaving massive untapped potential on the table, with varying severity. I am shocked to see this giant wrecking ball used to open nuts, it is nuts. I am committed to teach everyone to harness AI's full potential.",
     myApproach: "I maintain the 90-10% exploit/explore balance to ensure I keep updated with the AI revolution.",
     callToAction: "Build AI into the daily loop, not just the sprint planning."
   },
   {
-    title: "Programmable money is the future.",
+    title: "Crypto is the future",
     description: "The open programmable money will replace the old rails sooner than you think. Trust is becoming designed, open, and proven, not assumed. Money is becoming owned by users of the internet, not deposited.",
     myApproach: "I embrace the programmable money in my work and personal life.",
     callToAction: "Educate yourself to protect from people praying on blockchain-uneducated."
   },
   {
-    title: "AI Agents will use crypto more than humans.",
+    title: "AI Agents will use crypto more than humans",
     description: "As the next generation of money is evolving, the next generation money users have arrived: AI Agents. Get used to AI agents managing budgets, auto approving spending aligned with larger goals, and making micro transactions between each other with a volume 100x of humans.",
     myApproach: "I AI-agent-proof all my software projects.",
     callToAction: "Learn about AI and blockchain before it's too late."

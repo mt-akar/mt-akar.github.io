@@ -56,7 +56,7 @@ const experiences: Experience[] = [
     tech: ['Blockchain RPC', 'DePIN', 'Cloud', 'SDK Development', 'Linux', 'MongoDB'],
     nonFunctional: ['Scaling', 'Automation', '24/7 Operations', 'Security','Cost Optimization', "In-house Entrepreneurship"],
     metrics: [
-      { value: '26', label: 'Blockchains' },
+      { value: '26', label: 'Nodes Ran for Different Blockchains' },
       { value: '12K+', label: 'VMs Managed' },
       { value: '$10M+', label: 'Assets Operated' },
     ]
@@ -144,11 +144,11 @@ export default function WorkExperience() {
           style={{ opacity, scale }}
           className="relative"
         >
-          {/* Vertical Line */}
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-cyan-400/20 via-violet-600/20 to-pink-600/20" />
+          {/* Vertical Line - Now on the left */}
+          <div className="hidden lg:block absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400/20 via-violet-600/20 to-pink-600/20" />
 
           {/* Experience Cards */}
-          <div className="space-y-12 lg:space-y-24">
+          <div className="space-y-6 lg:space-y-10">
             {experiences.map((exp, index) => (
               <ExperienceCard key={index} experience={exp} index={index} />
             ))}
@@ -164,29 +164,25 @@ function ExperienceCard({ experience, index }: { experience: Experience; index: 
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [isHovered, setIsHovered] = useState(false)
 
-  const isEven = index % 2 === 0
-
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+      initial={{ opacity: 0, x: 30 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className={`relative flex flex-col lg:flex-row items-center gap-8 ${
-        isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
-      }`}
+      className="relative flex items-start gap-4 lg:gap-6"
     >
-      {/* Timeline Dot */}
-      <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-cyan-400 to-violet-600 rounded-full shadow-lg shadow-cyan-400/50 z-10">
+      {/* Timeline Dot - positioned on the left */}
+      <div className="hidden lg:flex absolute left-4 top-8 w-4 h-4 bg-gradient-to-r from-cyan-400 to-violet-600 rounded-full shadow-lg shadow-cyan-400/50 z-10 -translate-x-1/2">
         <div className="w-full h-full rounded-full animate-ping bg-cyan-400/30" />
       </div>
 
-      {/* Card */}
+      {/* Card - now all cards are on the right */}
       <motion.div
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
         whileHover={{ scale: 1.02 }}
-        className={`flex-1 ${isEven ? 'lg:pr-16' : 'lg:pl-16'}`}
+        className="flex-1 lg:ml-12"
       >
         <div className="relative group">
           {/* Glow Effect */}
@@ -334,9 +330,6 @@ function ExperienceCard({ experience, index }: { experience: Experience; index: 
           </div>
         </div>
       </motion.div>
-
-      {/* Empty space for timeline alignment */}
-      <div className="hidden lg:block flex-1" />
     </motion.div>
   )
 }

@@ -155,23 +155,28 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 mb-8">
               <div className="space-y-1">
                 <div className="text-3xl sm:text-4xl font-bold text-cyan-400">
-                  <AnimatedCounter end={4} duration={5000} delay={0} />
+                  <AnimatedCounter end={4} duration={5000} delay={0} easing="easeInQuad" />
                 </div>
                 <p className="text-sm text-gray-500">Years shipping</p>
               </div>
               
               <div className="space-y-1">
                 <div className="text-3xl sm:text-4xl font-bold text-violet-400">
-                  <AnimatedCounter end={30} duration={5000} delay={300} suffix="+" />
+                  {/* Pathology AI, Cointribute, InclusAI, Coin Checkout, RPC Studio
+                  // Albiders, Test Maker, Habiracker, Bottom Nav Layout
+                  // Date Night, Portfolio
+                  // Roger that, Web3 Studio, Spark, Kinesis Dotnet, Kinesis Explorer
+                  // */}
+                  <AnimatedCounter end={16} duration={5000} delay={300} suffix="+" easing="easeInQuad" />
                 </div>
                 <p className="text-sm text-gray-500">Projects spearheaded</p>
               </div>
               
               <div className="space-y-1">
                 <div className="text-3xl sm:text-4xl font-bold text-pink-400">
-                  <AnimatedCounter end={600} duration={5000} delay={600} suffix="k+" />
+                  <AnimatedCounter end={1400} duration={5000} delay={600} suffix="+" easing="easeInQuad" />
                 </div>
-                <p className="text-sm text-gray-500">People reached</p>
+                <p className="text-sm text-gray-500">Cloud resources managed</p>
               </div>
             </div>
           </div>
@@ -181,17 +186,14 @@ export default function Home() {
       {/* Trifecta Section */}
       <TrifectaSection />
 
-      {/* Signature Bets Section */}
-      <SignatureBets />
-
-      {/* AI-First Engine Section */}
-      <AIEngineSection />
-
       {/* Case Study Filmstrip Section */}
       <CaseStudyFilmstrip />
 
       {/* MAOS Section */}
       <MAOSSection />
+
+      {/* AI-First Engine Section */}
+      <AIEngineSection />
 
       {/* Impact Architecture Section */}
       <ImpactArchitecture />
@@ -200,7 +202,12 @@ export default function Home() {
       <ToolboxSection />
 
       {/* Testimonials Section */}
+      {/*
       <TestimonialsSection />
+      */}
+
+      {/* Signature Bets Section */}
+      <SignatureBets />
 
       {/* Contact Section */}
       <ContactSection />

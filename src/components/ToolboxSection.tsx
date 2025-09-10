@@ -7,6 +7,7 @@ interface Tool {
   name: string;
   iconName: string;
   iconExt?: string;
+  needsWhite?: boolean;
 }
 
 interface ToolGroup {
@@ -20,12 +21,12 @@ const toolGroups: ToolGroup[] = [
     category: 'Languages',
     tools: [
       { name: 'C#', iconName: 'csharp' },
+      { name: 'Python', iconName: 'python' },
       { name: 'TypeScript', iconName: 'typescript' },
       { name: 'JavaScript', iconName: 'javascript' },
-      { name: 'Python', iconName: 'python' },
-      { name: 'Go', iconName: 'go' },
-      { name: 'Dart', iconName: 'dart' },
       { name: 'Bash', iconName: 'bash' },
+      { name: 'Dart', iconName: 'dart' },
+      { name: 'Go', iconName: 'go' },
       { name: 'Java', iconName: 'java' },
       { name: 'Kotlin', iconName: 'kotlin' },
       { name: 'Rust', iconName: 'rust' }
@@ -35,53 +36,53 @@ const toolGroups: ToolGroup[] = [
   {
     category: 'Frameworks',
     tools: [
+      { name: '.NET', iconName: 'dotnet' },
       { name: 'Node.js', iconName: 'nodejs' },
-      { name: 'Express', iconName: 'express' },
       { name: 'React', iconName: 'react' },
       { name: 'Next.js', iconName: 'nextjs' },
+      { name: 'iOS', iconName: 'ios' },
+      { name: 'Android', iconName: 'android' },
+      { name: 'Flutter', iconName: 'flutter' },
+      { name: 'Express', iconName: 'express', needsWhite: true },
       { name: 'Angular', iconName: 'angular' },
-      { name: '.NET', iconName: 'dotnet' },
       { name: 'ASP.NET', iconName: 'aspnet' },
       { name: 'Blazor', iconName: 'blazor' },
       { name: 'MAUI', iconName: 'maui' },
-      { name: 'Android', iconName: 'android' },
-      { name: 'iOS', iconName: 'ios' },
-      { name: 'Flutter', iconName: 'flutter' }
     ],
     color: 'from-violet-400 to-purple-600'
   },
   {
     category: 'Web3',
     tools: [
-      { name: 'Solidity', iconName: 'solidity' },
-      { name: 'EVM', iconName: 'ethereum' },
+      { name: 'Solidity', iconName: 'solidity', needsWhite: true },
+      { name: 'Chainlink', iconName: 'chainlink' },
+      { name: 'Metamask', iconName: 'metamask' },
       { name: 'Tether', iconName: 'tether' },
       { name: 'USDC', iconName: 'usdc' },
       { name: 'Hardhat', iconName: 'hardhat' },
       { name: 'Foundry', iconName: 'foundry', iconExt: 'png' },
+      { name: 'EVM', iconName: 'ethereum' },
       { name: 'ethers.js', iconName: 'ethersjs' },
       { name: 'web3.js', iconName: 'web3js' },
-      { name: 'Chainlink', iconName: 'chainlink' },
       { name: 'Open Zeppelin', iconName: 'open-zeppelin' },
       { name: 'Aave', iconName: 'aave' },
-      { name: 'Metamask', iconName: 'metamask' },
     ],
     color: 'from-green-400 to-emerald-600'
   },
   {
     category: 'Blockchains',
     tools: [
-      { name: 'Bitcoin', iconName: 'bitcoin' },
       { name: 'Ethereum', iconName: 'ethereum' },
+      { name: 'Bitcoin', iconName: 'bitcoin' },
       { name: 'Solana', iconName: 'solana' },
-      { name: 'Binance Chain', iconName: 'bnb' },
       { name: 'Polygon', iconName: 'polygon' },
+      { name: 'Tron', iconName: 'tron' },
+      { name: 'Binance Chain', iconName: 'bnb' },
       { name: 'Arbitrum', iconName: 'arbitrum' },
       { name: 'Avalanche', iconName: 'avalanche' },
       { name: 'Base', iconName: 'base' },
       { name: 'Fantom', iconName: 'fantom' },
       { name: 'Optimism', iconName: 'optimism' },
-      { name: 'Tron', iconName: 'tron' },
       { name: 'Sui', iconName: 'sui' },
       { name: 'Pocket', iconName: 'pocket-network' }
     ],
@@ -92,21 +93,22 @@ const toolGroups: ToolGroup[] = [
     tools: [
       { name: 'AWS', iconName: 'aws' },
       { name: 'Azure', iconName: 'azure' },
+      { name: 'GCP', iconName: 'gcp' },
       { name: 'DigitalOcean', iconName: 'digitalocean' },
+      { name: 'Kinesis', iconName: 'kinesis' },
       { name: 'OVH', iconName: 'ovh' },
       { name: 'Contabo', iconName: 'contabo' },
-      { name: 'GCP', iconName: 'gcp' },
-      { name: 'Kinesis', iconName: 'kinesis' },
-      { name: 'Vercel', iconName: 'vercel' }
+      { name: 'Vercel', iconName: 'vercel', needsWhite: true }
     ],
     color: 'from-pink-400 to-rose-600'
   },
   {
     category: 'DevOps',
     tools: [
+      { name: 'Git', iconName: 'git' },
       { name: 'Docker', iconName: 'docker' },
+      { name: 'GitHub', iconName: 'github', needsWhite: true },
       { name: 'Kubernetes', iconName: 'kubernetes' },
-      { name: 'GitHub Actions', iconName: 'github-actions' },
       { name: 'Terraform', iconName: 'terraform' },
       { name: 'Linux', iconName: 'linux' },
       { name: 'Nginx', iconName: 'nginx' },
@@ -120,13 +122,14 @@ const toolGroups: ToolGroup[] = [
     category: 'Data',
     tools: [
       { name: 'PostgreSQL', iconName: 'postgresql' },
+      { name: 'Redis', iconName: 'redis' },
+      { name: 'MongoDB', iconName: 'mongodb' },
+      { name: 'DynamoDB', iconName: 'dynamodb' },
       { name: 'MySQL', iconName: 'mysql' },
       { name: 'SQLite', iconName: 'sqlite' },
       { name: 'MSSQL', iconName: 'mssql' },
-      { name: 'MongoDB', iconName: 'mongodb' },
-      { name: 'DynamoDB', iconName: 'dynamodb' },
+      { name: 'Elasticsearch', iconName: 'elasticsearch' },
       { name: 'Cassandra', iconName: 'cassandra' },
-      { name: 'Redis', iconName: 'redis' },
       { name: 'CosmosDB', iconName: 'cosmosdb' }
     ],
     color: 'from-indigo-400 to-blue-600'
@@ -134,15 +137,16 @@ const toolGroups: ToolGroup[] = [
   {
     category: 'AI & ML',
     tools: [
-      { name: 'OpenAI', iconName: 'openai' },
-      { name: 'Anthropic', iconName: 'anthropic' },
-      { name: 'Gemini', iconName: 'gemini' },
+      { name: 'OpenAI', iconName: 'openai', needsWhite: true },
       { name: 'Claude', iconName: 'claude' },
-      { name: 'Qwen', iconName: 'qwen' },
+      { name: 'Ollama', iconName: 'ollama', needsWhite: true },
+      { name: 'Gemini', iconName: 'gemini' },
+      { name: 'Grok', iconName: 'grok', needsWhite: true },
       { name: 'DeepSeek', iconName: 'deepseek' },
-      { name: 'Llama', iconName: 'meta' },
+      { name: 'Qwen', iconName: 'qwen' },
       { name: 'Copilot', iconName: 'copilot' },
-      { name: 'Ollama', iconName: 'ollama' },
+      { name: 'Anthropic', iconName: 'anthropic', needsWhite: true },
+      { name: 'Llama', iconName: 'meta' },
       { name: 'CUDA', iconName: 'nvidia' },
     ],
     color: 'from-teal-400 to-cyan-600'
@@ -152,7 +156,20 @@ const toolGroups: ToolGroup[] = [
 export default function ToolboxSection() {
   const [isInView, setIsInView] = useState(false);
   const [animationTime, setAnimationTime] = useState(0);
+  const [isNarrowScreen, setIsNarrowScreen] = useState(false);
+  const [expandedGroups, setExpandedGroups] = useState<Set<number>>(new Set());
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsNarrowScreen(window.innerWidth < 760);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -230,6 +247,35 @@ export default function ToolboxSection() {
     return toolZIndex;
   };
 
+  const toggleGroupExpansion = (groupIndex: number) => {
+    const newExpanded = new Set(expandedGroups);
+    if (newExpanded.has(groupIndex)) {
+      newExpanded.delete(groupIndex);
+    } else {
+      newExpanded.add(groupIndex);
+    }
+    setExpandedGroups(newExpanded);
+  };
+
+  // Determine number of columns based on screen width
+  const getColumnsClass = () => {
+    if (typeof window === 'undefined') return 'grid-cols-4';
+    const width = window.innerWidth;
+    if (width < 400) return 'grid-cols-3';
+    if (width < 500) return 'grid-cols-4';
+    return 'grid-cols-5';
+  };
+
+  const getVisibleTools = (tools: Tool[], groupIndex: number) => {
+    const columnsClass = getColumnsClass();
+    const cols = parseInt(columnsClass.split('-').pop() || '4');
+    
+    if (expandedGroups.has(groupIndex)) {
+      return tools;
+    }
+    return tools.slice(0, cols);
+  };
+
   return (
     <section 
       id="toolbox"
@@ -237,24 +283,105 @@ export default function ToolboxSection() {
       className="relative py-12 lg:py-20 overflow-hidden bg-gradient-to-b from-black via-[#0A0818] to-black"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
-        <div 
-          className="relative mx-auto"
-          style={{
-            height: '700px',
-            width: '100%',
-            maxWidth: '900px',
-            perspective: '1000px',
-            perspectiveOrigin: '50% 50%'
-          }}
-        >
-          {/* Section Title in center of orbit */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-            <SectionTitle 
-              title="Toolbox"
-              subtitle="Technologies in my orbit"
-              isInView={isInView}
-            />
+        {/* Mobile Layout for narrow screens */}
+        {isNarrowScreen ? (
+          <div className="space-y-8">
+            {/* Section Title */}
+            <div className="text-center mb-12">
+              <SectionTitle 
+                title="Toolbox"
+                subtitle="Technologies I work with"
+                isInView={isInView}
+              />
+            </div>
+            
+            {/* Grouped Tool Cards */}
+            <div className="grid gap-6">
+              {toolGroups.map((group, index) => {
+                const columnsClass = getColumnsClass();
+                const cols = parseInt(columnsClass.split('-').pop() || '4');
+                const hasMore = group.tools.length > cols;
+                const isExpanded = expandedGroups.has(index);
+                const visibleTools = getVisibleTools(group.tools, index);
+                
+                return (
+                  <div
+                    key={index}
+                    className={`transition-all duration-700 ${
+                      isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                    style={{ transitionDelay: `${index * 100}ms` }}
+                  >
+                    <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl rounded-2xl border border-white/10 p-6 hover:border-white/20 transition-all duration-300">
+                      {/* Group Header with Toggle */}
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className={`text-lg font-bold bg-gradient-to-r ${group.color} bg-clip-text text-transparent`}>
+                          {group.category} <span className="text-sm font-normal text-gray-500">({group.tools.length})</span>
+                        </h3>
+                        {hasMore && (
+                          <button
+                            onClick={() => toggleGroupExpansion(index)}
+                            className="text-white/50 hover:text-white/80 transition-colors duration-300 p-1"
+                            aria-label={isExpanded ? 'Show less' : 'Show more'}
+                          >
+                            <svg 
+                              className={`w-5 h-5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                              fill="none" 
+                              viewBox="0 0 24 24" 
+                              stroke="currentColor"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </button>
+                        )}
+                      </div>
+                      
+                      {/* Tools Grid */}
+                      <div className={`grid ${getColumnsClass()} gap-3 overflow-hidden`}>
+                        {visibleTools.map((tool, toolIndex) => (
+                          <div
+                            key={toolIndex}
+                            className="flex flex-col items-center gap-1 group"
+                          >
+                            <div className="bg-black/50 rounded-lg border border-white/20 p-2 group-hover:bg-white/10 group-hover:scale-110 transition-all duration-300">
+                              <img 
+                                src={`/icons/${tool.iconName}.${tool.iconExt || 'svg'}`}
+                                alt={tool.name}
+                                className={`w-8 h-8 object-contain ${tool.needsWhite ? 'brightness-0 invert' : ''}`}
+                              />
+                            </div>
+                            <span className="text-[10px] text-gray-400 text-center leading-tight">
+                              {tool.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
+        ) : (
+          /* Desktop Planetary Layout */
+          <div 
+            className="relative mx-auto"
+            style={{
+              height: '700px',
+              width: '100%',
+              maxWidth: '900px',
+              perspective: '1000px',
+              perspectiveOrigin: '50% 50%'
+            }}
+          >
+            {/* Section Title in center of orbit */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+              <SectionTitle 
+                title="Toolbox"
+                subtitle="Technologies in my orbit"
+                isInView={isInView}
+              />
+            </div>
           
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <div
@@ -344,7 +471,7 @@ export default function ToolboxSection() {
                                     <img 
                                       src={`/icons/${tool.iconName}.${tool.iconExt || 'svg'}`}
                                       alt={tool.name}
-                                      className="w-full h-full object-contain"
+                                      className={`w-full h-full object-contain ${tool.needsWhite ? 'brightness-0 invert' : ''}`}
                                     />
                                   </div>
                                   <span 
@@ -408,6 +535,7 @@ export default function ToolboxSection() {
             </div>
           </div>
         </div>
+        )}
       </div>
 
       <style jsx>{`
