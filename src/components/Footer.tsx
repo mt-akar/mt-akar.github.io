@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import { Mail, Linkedin, Github, Twitter, Send, Calendar } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -28,8 +30,10 @@ export default function Footer() {
     ],
     Contact: [
       { name: 'Email', href: 'mailto:m@akar.im', external: false },
+      { name: 'Book a Call', href: 'https://calendly.com/m-akar', external: true },
       { name: 'LinkedIn', href: 'https://www.linkedin.com/in/m-akar/', external: true },
-      { name: 'Discord', href: 'https://discord.com/users/232187411386335232', external: true }
+      { name: 'Discord', href: 'https://discord.com/users/232187411386335232', external: true },
+      { name: 'Telegram', href: 'https://t.me/mtfakar', external: true },
     ]
   };
 
@@ -112,28 +116,70 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href="mailto:m@akar.im"
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors group"
                 aria-label="Email"
               >
-                <div className="w-4 h-4 bg-white/50 rounded-sm" />
+                <Mail className="w-4 h-4 text-white/50 group-hover:text-white/70 transition-colors" />
+              </a>
+              <a
+                href="https://calendly.com/m-akar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors group"
+                aria-label="Book a Call"
+              >
+                <Calendar className="w-4 h-4 text-white/50 group-hover:text-white/70 transition-colors" />
               </a>
               <a
                 href="https://www.linkedin.com/in/m-akar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors group"
                 aria-label="LinkedIn"
               >
-                <div className="w-4 h-4 bg-white/50 rounded-sm" />
+                <Linkedin className="w-4 h-4 text-white/50 group-hover:text-white/70 transition-colors" />
               </a>
               <a
                 href="https://discord.com/users/232187411386335232"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors group"
                 aria-label="Discord"
               >
-                <div className="w-4 h-4 bg-white/50 rounded" />
+                <Image 
+                  src="/icons/discord.svg" 
+                  alt="Discord" 
+                  width={16} 
+                  height={16} 
+                  className="opacity-50 group-hover:opacity-70 transition-opacity brightness-0 invert"
+                />
+              </a>
+              <a
+                href="https://t.me/mtfakar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors group"
+                aria-label="Telegram"
+              >
+                <Send className="w-4 h-4 text-white/50 group-hover:text-white/70 transition-colors" />
+              </a>
+              <a
+                  href="https://x.com/mtf_akar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors group"
+                  aria-label="X (Twitter)"
+              >
+                <Twitter className="w-4 h-4 text-white/50 group-hover:text-white/70 transition-colors" />
+              </a>
+              <a
+                  href="https://github.com/mt-akar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors group"
+                  aria-label="GitHub"
+              >
+                <Github className="w-4 h-4 text-white/50 group-hover:text-white/70 transition-colors" />
               </a>
             </div>
           </div>

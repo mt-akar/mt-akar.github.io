@@ -38,7 +38,7 @@ export default function EducationPage() {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
             >
-              <span className="bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 to-violet-600 bg-clip-text text-transparent">
                 Education
               </span>
             </motion.h2>
@@ -59,7 +59,7 @@ export default function EducationPage() {
             
             <div className="relative bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
               {/* Header with gradient accent */}
-              <div className="h-2 bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600" />
+              <div className="h-2 bg-gradient-to-r from-cyan-400 to-violet-600" />
               
               <div className="p-8 md:p-10">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">

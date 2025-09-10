@@ -2,6 +2,7 @@
 
 import { useCallback } from 'react';
 import { Mail, MessageSquare, Calendar, Linkedin, Twitter, Send } from 'lucide-react';
+import { useMagneticEffect } from '@/hooks/useMagneticEffect';
 
 interface ContactMethod {
   id: string;
@@ -70,12 +71,12 @@ const contactMethods: ContactMethod[] = [
   },
 ];
 
-interface ContactCardsProps {
+interface ContactCardsAnimatedProps {
   onHoverMethod: (method: string | null) => void;
   isInView: boolean;
 }
 
-export default function ContactCards({ onHoverMethod, isInView }: ContactCardsProps) {
+export default function ContactCardsAnimated({ onHoverMethod, isInView }: ContactCardsAnimatedProps) {
 
   const handleCardClick = useCallback((method: ContactMethod) => {
     if (method.id === 'email') {
@@ -86,12 +87,12 @@ export default function ContactCards({ onHoverMethod, isInView }: ContactCardsPr
   }, []);
 
   const colorClasses = {
-    cyan: 'from-cyan-400/10 via-cyan-500/10 to-blue-600/10 group-hover:from-cyan-400/20 group-hover:via-cyan-500/20 group-hover:to-blue-600/20',
-    blue: 'from-blue-400/10 via-indigo-500/10 to-purple-600/10 group-hover:from-blue-400/20 group-hover:via-indigo-500/20 group-hover:to-purple-600/20',
-    violet: 'from-violet-400/10 via-purple-500/10 to-pink-600/10 group-hover:from-violet-400/20 group-hover:via-purple-500/20 group-hover:to-pink-600/20',
-    gray: 'from-slate-400/10 via-gray-500/10 to-zinc-600/10 group-hover:from-slate-400/20 group-hover:via-gray-500/20 group-hover:to-zinc-600/20',
-    pink: 'from-pink-400/10 via-rose-500/10 to-red-600/10 group-hover:from-pink-400/20 group-hover:via-rose-500/20 group-hover:to-red-600/20',
-    sky: 'from-sky-400/10 via-cyan-500/10 to-teal-600/10 group-hover:from-sky-400/20 group-hover:via-cyan-500/20 group-hover:to-teal-600/20',
+    cyan: 'from-cyan-400/30 via-cyan-500/20 to-blue-600/30 group-hover:from-cyan-400/40 group-hover:via-cyan-500/30 group-hover:to-blue-600/40',
+    blue: 'from-blue-400/30 via-indigo-500/20 to-purple-600/30 group-hover:from-blue-400/40 group-hover:via-indigo-500/30 group-hover:to-purple-600/40',
+    violet: 'from-violet-400/30 via-purple-500/20 to-pink-600/30 group-hover:from-violet-400/40 group-hover:via-purple-500/30 group-hover:to-pink-600/40',
+    gray: 'from-slate-400/30 via-gray-500/20 to-zinc-600/30 group-hover:from-slate-400/40 group-hover:via-gray-500/30 group-hover:to-zinc-600/40',
+    pink: 'from-pink-400/30 via-rose-500/20 to-red-600/30 group-hover:from-pink-400/40 group-hover:via-rose-500/30 group-hover:to-red-600/40',
+    sky: 'from-sky-400/30 via-cyan-500/20 to-teal-600/30 group-hover:from-sky-400/40 group-hover:via-cyan-500/30 group-hover:to-teal-600/40',
   };
 
   const iconColorClasses = {
@@ -110,7 +111,7 @@ export default function ContactCards({ onHoverMethod, isInView }: ContactCardsPr
         {contactMethods.map((method, index) => {
           const Icon = method.icon;
           return (
-            <ContactCard
+            <MagneticCard
               key={method.id}
               method={method}
               Icon={Icon}
@@ -128,8 +129,8 @@ export default function ContactCards({ onHoverMethod, isInView }: ContactCardsPr
   );
 }
 
-// Separate component for each card
-function ContactCard({ 
+// Separate component for each card to handle its own magnetic effect
+function MagneticCard({ 
   method, 
   Icon, 
   index, 
@@ -148,64 +149,65 @@ function ContactCard({
   colorClasses: any;
   iconColorClasses: any;
 }) {
+  const magnetic = useMagneticEffect({
+    strength: 0.3,
+    maxDistance: 250
+  });
+
   return (
     <div
+      ref={magnetic.ref}
       className={`group relative cursor-pointer transition-opacity duration-700 w-full ${
         isInView ? 'opacity-100' : 'opacity-0'
       }`}
       style={{ 
-        transitionDelay: `${0.4 + index * 0.1}s`
+        transitionDelay: `${0.4 + index * 0.1}s`,
+        ...magnetic.style
       }}
       onMouseEnter={() => onHoverMethod(method.id)}
       onMouseLeave={() => onHoverMethod(null)}
       onClick={() => handleCardClick(method)}
     >
-              {/* Glow Effect - Behind the card */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses[method.color as keyof typeof colorClasses]} rounded-2xl blur-xl transition-all duration-500`} />
+              {/* Animated Gradient Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses[method.color as keyof typeof colorClasses]} rounded-2xl transition-all duration-500 blur-sm group-hover:blur-none`} />
               
-              {/* Main Card - Matching dashboard style */}
-              <div className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl overflow-hidden">
-                
-                {/* Card Content */}
-                <div className="relative p-6 space-y-4">
-                {/* Icon Container */}
-                <div className={`w-12 h-12 rounded-xl ${
-                  method.color === 'cyan' ? 'bg-cyan-600/10 dark:bg-cyan-400/10' :
-                  method.color === 'blue' ? 'bg-blue-600/10 dark:bg-blue-400/10' :
-                  method.color === 'violet' ? 'bg-violet-600/10 dark:bg-violet-400/10' :
-                  method.color === 'gray' ? 'bg-gray-600/10 dark:bg-gray-400/10' :
-                  method.color === 'pink' ? 'bg-pink-600/10 dark:bg-pink-400/10' :
-                  method.color === 'sky' ? 'bg-sky-600/10 dark:bg-sky-400/10' :
-                  'bg-gray-600/10 dark:bg-gray-400/10'
-                } flex items-center justify-center ${iconColorClasses[method.color as keyof typeof iconColorClasses]}`}>
-                  <Icon className="w-6 h-6" />
+              {/* Additional Glow Effect */}
+              <div className={`absolute inset-0 bg-gradient-to-tr ${colorClasses[method.color as keyof typeof colorClasses]} rounded-2xl opacity-50 group-hover:opacity-70 transition-all duration-500`} />
+              
+              {/* Glass Effect Border with enhanced glow */}
+              <div className="absolute inset-0 rounded-2xl bg-black/20 backdrop-blur-md border border-white/20 group-hover:border-white/30 transition-all duration-300" />
+              
+              {/* Card Content */}
+              <div className="relative p-6 space-y-4">
+                {/* Icon Container with gradient */}
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-sm flex items-center justify-center ${iconColorClasses[method.color as keyof typeof iconColorClasses]} group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon className="w-6 h-6 drop-shadow-lg" />
                 </div>
                 
                 {/* Title */}
-                <h3 className={`text-xl font-bold text-gray-900 dark:text-white transition-all duration-300 ${
-                  method.color === 'cyan' ? 'group-hover:text-cyan-600 dark:group-hover:text-cyan-400' :
-                  method.color === 'blue' ? 'group-hover:text-blue-600 dark:group-hover:text-blue-400' :
-                  method.color === 'violet' ? 'group-hover:text-violet-600 dark:group-hover:text-violet-400' :
-                  method.color === 'gray' ? 'group-hover:text-gray-600 dark:group-hover:text-gray-400' :
-                  method.color === 'pink' ? 'group-hover:text-pink-600 dark:group-hover:text-pink-400' :
-                  method.color === 'sky' ? 'group-hover:text-sky-600 dark:group-hover:text-sky-400' :
-                  'group-hover:text-gray-700 dark:group-hover:text-white'
+                <h3 className={`text-xl font-bold text-white transition-all duration-300 ${
+                  method.color === 'cyan' ? 'group-hover:text-cyan-400' :
+                  method.color === 'blue' ? 'group-hover:text-blue-400' :
+                  method.color === 'violet' ? 'group-hover:text-violet-400' :
+                  method.color === 'gray' ? 'group-hover:text-gray-400' :
+                  method.color === 'pink' ? 'group-hover:text-pink-400' :
+                  method.color === 'sky' ? 'group-hover:text-sky-400' :
+                  'group-hover:text-white'
                 }`}>
                   {method.title}
                 </h3>
                 
                 {/* Response Time */}
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-400">
                   {method.responseTime}
                 </p>
                 
                 
                 {/* Hover Action Indicator */}
                 <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Send className="w-4 h-4 text-gray-500 dark:text-white/50" />
+                  <Send className="w-4 h-4 text-white/50" />
                 </div>
               </div>
             </div>
-    </div>
   );
 }

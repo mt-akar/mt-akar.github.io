@@ -118,7 +118,7 @@ export default function ContinueExploring({
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-600 bg-clip-text text-transparent">
               Continue Exploring
             </span>
           </h2>

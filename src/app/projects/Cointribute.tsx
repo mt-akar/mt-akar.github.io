@@ -15,7 +15,7 @@ function HeroSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center py-20">
+    <section ref={ref} className="relative flex items-center py-20">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-50/50 to-rose-50/50 dark:from-pink-950/20 dark:to-rose-950/20" />
       
@@ -32,9 +32,11 @@ function HeroSection() {
               <span className="text-sm font-medium text-pink-700 dark:text-pink-300">Crypto Donation Platform</span>
             </div>
             
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-2 text-gray-900 dark:text-white">
               Cointribute
             </h2>
+            
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">March 2023 - Present</p>
             
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               Enabling charities worldwide to accept crypto donations with zero fees, 
@@ -65,12 +67,12 @@ function HeroSection() {
                 <div className="text-sm text-gray-600 dark:text-gray-400">Verified Charities</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">8</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Supported Currencies</div>
+                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">$10K+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Donations Mediated</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">0%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Fees Forever</div>
+                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">15+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Donors</div>
               </div>
             </div>
             
@@ -120,14 +122,14 @@ function HeroSection() {
                 
                 <div className="flex items-center gap-2 ml-4">
                   <div className="border-l-2 border-pink-400 h-8" />
-                  <span className="text-sm font-medium text-pink-600 dark:text-pink-400">Instantly, Globally Available</span>
+                  <span className="text-sm font-medium text-pink-600 dark:text-pink-400">Instantly, globally available</span>
                 </div>
                 
                 <div className="flex items-center gap-4 p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
                   <HandHeart className="w-8 h-8 text-pink-600 dark:text-pink-400" />
                   <div className="flex-1">
                     <div className="font-medium text-gray-800 dark:text-gray-200">Aid Recipient</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Funds or resources</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400"></div>
                   </div>
                 </div>
               </div>
@@ -210,7 +212,7 @@ function TimelineSection() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            Timeline
+            Journey
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             From checkout infrastructure to donation platform

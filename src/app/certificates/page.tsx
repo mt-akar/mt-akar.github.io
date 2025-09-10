@@ -110,7 +110,7 @@ export default function CertificationsPage() {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
             >
-              <span className="bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 to-violet-600 bg-clip-text text-transparent">
                 Professional Certifications
               </span>
             </motion.h2>
@@ -320,7 +320,7 @@ export default function CertificationsPage() {
         </div>
       </section>
 
-      <ContinueExploring {...continueExploringPresets.certifications} />
+      <ContinueExploring {...continueExploringPresets.certificates} />
 
       <Footer />
     </div>

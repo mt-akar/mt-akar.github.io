@@ -14,176 +14,8 @@ import {
 
 import PathologyAIProject from './PathologyAI'
 import CointributeProject from './Cointribute'
+import InclusAIProject from './InclusAI'
 
-// InclusAI Section  
-function InclusAISection() {
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [showTransform, setShowTransform] = useState(false)
-  
-  return (
-    <section ref={ref} className="relative min-h-screen flex items-center py-20 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/10 via-teal-900/10 to-cyan-900/10 dark:from-emerald-900/20 dark:via-teal-900/20 dark:to-cyan-900/20" />
-      
-      {/* Floating AI and accessibility icons */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-20 left-10"
-          animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <Brain className="w-8 h-8 text-emerald-300/20 dark:text-emerald-400/20" />
-        </motion.div>
-        <motion.div
-          className="absolute top-40 right-20"
-          animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        >
-          <Accessibility className="w-10 h-10 text-teal-300/20 dark:text-teal-400/20" />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-40 left-20"
-          animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        >
-          <Languages className="w-12 h-12 text-cyan-300/20 dark:text-cyan-400/20" />
-        </motion.div>
-        <motion.div
-          className="absolute top-60 left-1/3"
-          animate={{ y: [0, 25, 0], rotate: [0, 15, 0] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-        >
-          <BookOpen className="w-9 h-9 text-emerald-300/20 dark:text-emerald-400/20" />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-20 right-1/4"
-          animate={{ y: [0, -30, 0], x: [0, -15, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-        >
-          <BrainCircuit className="w-11 h-11 text-teal-300/20 dark:text-teal-400/20" />
-        </motion.div>
-        <motion.div
-          className="absolute top-32 right-1/3"
-          animate={{ y: [0, 20, 0], rotate: [0, -20, 0] }}
-          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
-        >
-          <MessageSquare className="w-10 h-10 text-cyan-300/20 dark:text-cyan-400/20" />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-60 right-10"
-          animate={{ y: [0, -25, 0], x: [0, 20, 0] }}
-          transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-        >
-          <Type className="w-8 h-8 text-emerald-300/20 dark:text-emerald-400/20" />
-        </motion.div>
-        <motion.div
-          className="absolute top-80 left-40"
-          animate={{ y: [0, 15, 0], rotate: [0, 12, 0] }}
-          transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 3.5 }}
-        >
-          <Eye className="w-9 h-9 text-teal-300/20 dark:text-teal-400/20" />
-        </motion.div>
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-            <GraduationCap className="w-4 h-4 text-emerald-400" />
-            <span className="text-sm font-medium text-emerald-400">AI • Accessibility</span>
-          </div>
-          
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-            InclusAI
-          </h2>
-          
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Making government communications accessible through AI-powered language simplification
-          </p>
-        </motion.div>
-        
-        {/* Live Transformation Demo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: 0.3 }}
-          className="max-w-5xl mx-auto mb-12"
-        >
-          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold">Live Transformation</h3>
-              <button
-                onClick={() => setShowTransform(!showTransform)}
-                className="px-4 py-2 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
-              >
-                {showTransform ? 'Show Original' : 'Simplify Text'}
-              </button>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className={`${!showTransform ? 'opacity-100' : 'opacity-50'} transition-opacity`}>
-                <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Original</div>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  "Administrative proceedings pursuant to regulatory framework established under directive 2024/EU/789 
-                  require mandatory compliance verification through designated institutional channels..."
-                </p>
-              </div>
-              
-              <div className={`${showTransform ? 'opacity-100' : 'opacity-50'} transition-opacity`}>
-                <div className="text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-2">Simplified</div>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  "Government meetings that follow the rules need to be checked by the right offices..."
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-        
-        {/* Platform Support */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.5 }}
-          className="text-center"
-        >
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Works with 12+ CMS platforms</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {['WordPress', 'Drupal', 'React', 'Vue.js', 'Angular', 'Shopify'].map((platform) => (
-              <span key={platform} className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600">
-                {platform}
-              </span>
-            ))}
-          </div>
-          
-          <div className="mt-8 flex justify-center gap-4">
-            <a
-              href="https://inclusai.de/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Visit Site
-            </a>
-            <a
-              href="https://staging.inclusai.de/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              <Terminal className="w-4 h-4" />
-              Documentation
-            </a>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
 
 // Coin Checkout Section
 function CoinCheckoutSection() {
@@ -466,7 +298,7 @@ export default function ProjectsPage() {
   const sections = [
     { name: 'Pathology AI', component: PathologyAIProject },
     { name: 'Cointribute', component: CointributeProject },
-    { name: 'InclusAI', component: InclusAISection },
+    { name: 'InclusAI', component: InclusAIProject },
     { name: 'Coin Checkout', component: CoinCheckoutSection },
     { name: 'Libraries', component: LibraryProjectsSection },
     { name: 'Date Night', component: DateNightGameSection }
@@ -506,7 +338,7 @@ export default function ProjectsPage() {
               transition={{ duration: 0.6 }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
             >
-              <span className="bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 to-violet-600 bg-clip-text text-transparent">
                 Featured Projects
               </span>
             </motion.h1>

@@ -1,32 +1,22 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Sparkles, Rocket, Users, ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactCards from '@/components/ContactCards';
 
 export default function ContactPage() {
-  const [isInView, setIsInView] = useState(false);
   const pageRef = useRef<HTMLDivElement>(null);
-  const mainSectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isInView) {
-          setIsInView(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (mainSectionRef.current) {
-      observer.observe(mainSectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isInView]);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  
+  // Use multiple refs with better thresholds
+  const isTitleInView = useInView(titleRef, { once: true, amount: 0.3 });
+  const isCardsInView = useInView(cardsRef, { once: true, amount: 0.1 });
+  const isFormInView = useInView(formRef, { once: true, amount: 0.1 });
 
 
   return (
@@ -46,23 +36,24 @@ export default function ContactPage() {
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             {/* Section Header */}
-            <div className="text-center" ref={mainSectionRef}>
-              <h1
-                className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-16 transition-all duration-600 ${
-                  isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}
+            <div className="text-center" ref={titleRef}>
+              <motion.h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6 }}
               >
-                <span className="bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-cyan-400 to-violet-600 bg-clip-text text-transparent">
                   Contact
                 </span>
-              </h1>
+              </motion.h1>
               
               {/* Hero Message Card */}
-              <div 
-                className={`mt-12 transition-all duration-1000 ${
-                  isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: '0.2s' }}
+              <motion.div 
+                className="mt-12"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
                 {/* Glass Card Container */}
                 <div className="relative mb-4 p-4 lg:p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
@@ -85,35 +76,41 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
 
         {/* Contact Methods Section */}
-        <section className="relative py-12">
+        <section className="relative py-12" ref={cardsRef}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <ContactCards 
               onHoverMethod={() => {}}
-              isInView={isInView}
+              isInView={isCardsInView}
             />
           </div>
         </section>
 
         {/* Quick Message Section */}
-        <section className="relative py-12">
+        <section className="relative py-12" ref={formRef}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className={`p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 transition-all duration-1000 ${
-              isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '0.8s' }}>
+            <motion.div 
+              className="p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8, delay: 0.4 }}>
               <h3 className="text-2xl font-bold text-white mb-4">Quick Message</h3>              
-              <form className="space-y-6">
+              <form 
+                className="space-y-6"
+                action="https://formspree.io/f/mpwjbjre"
+                method="POST"
+              >
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm text-gray-400 mb-2">Your Name</label>
                     <input 
                       type="text"
+                      name="name"
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
                       placeholder="John Doe"
                     />
@@ -122,8 +119,10 @@ export default function ContactPage() {
                     <label className="block text-sm text-gray-400 mb-2">Your Email</label>
                     <input 
                       type="email"
+                      name="email"
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
                       placeholder="john@example.com"
+                      required
                     />
                   </div>
                 </div>
@@ -132,6 +131,7 @@ export default function ContactPage() {
                   <label className="block text-sm text-gray-400 mb-2">Subject</label>
                   <input 
                     type="text"
+                    name="subject"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
                     placeholder="Let's build something amazing"
                   />
@@ -140,9 +140,11 @@ export default function ContactPage() {
                 <div>
                   <label className="block text-sm text-gray-400 mb-2">Message</label>
                   <textarea 
+                    name="message"
                     rows={6}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors resize-none"
                     placeholder="Tell me about your project, idea, or just say hello..."
+                    required
                   />
                 </div>
                 
@@ -159,7 +161,7 @@ export default function ContactPage() {
                   </button>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </div>
         </section>
         

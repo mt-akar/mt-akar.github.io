@@ -18,7 +18,7 @@ function HeroSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center py-20">
+    <section ref={ref} className="relative flex items-center py-20">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-violet-50/50 to-purple-50/50 dark:from-violet-950/20 dark:to-purple-950/20" />
       
@@ -35,9 +35,11 @@ function HeroSection() {
               <span className="text-sm font-medium text-violet-700 dark:text-violet-300">AI-Powered Medical Research</span>
             </div>
             
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-2 text-gray-900 dark:text-white">
               Pathology AI
             </h2>
+            
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">April 2024 - Present</p>
             
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               Automated data extraction, analysis and visualization of pathology reports. Reduces 80 hour data preparation process to 3 hours with 100% accuracy.
@@ -219,7 +221,7 @@ function TimelineSection() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            Timeline
+            Journey
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             From problem discovery to institutional deployment

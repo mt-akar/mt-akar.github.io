@@ -79,7 +79,6 @@ export default function SignatureBets() {
               key={index}
               title={bet.title}
               description={bet.description}
-              implication={bet.myApproach}
               action={bet.callToAction}
               index={index}
               isInView={isInView}
