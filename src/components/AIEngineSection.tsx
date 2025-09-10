@@ -1,59 +1,105 @@
 'use client';
 
-import { useEffect, useRef, useState, useMemo } from 'react';
-import PipelineStage from './PipelineStage';
+import { useEffect, useRef, useState } from 'react';
+import { Target, Music, Check, Award } from 'lucide-react';
 import SectionTitle from './SectionTitle';
-import SpeedoMeter from './SpeedoMeter';
+import AnimatedCounter from './AnimatedCounter';
 
-const stages = [
+// Type definition for AI models
+type AIModel = {
+  name: string;
+  icon: string;
+  use: string;
+  filter?: string;
+};
+
+// AI Tools with specific use cases
+const aiModels: {
+  analysis: AIModel[];
+  autonomous: AIModel[];
+  specialized: AIModel[];
+  validation: AIModel[];
+} = {
+  analysis: [
+    { name: 'Claude Opus', icon: '/icons/claude.svg', use: 'Deep requirement analysis & architecture decisions' },
+    { name: 'Claude Sonnet', icon: '/icons/claude.svg', use: 'Code generation, planning & reviews' }
+  ],
+  autonomous: [
+    { name: 'Cursor Agents', icon: '/icons/cursor.svg', use: 'Autonomous coding' },
+    { name: 'OpenAI Codex', icon: '/icons/openai.svg', use: 'End-to-end feature generation', filter: 'brightness(0) invert(1)' },
+    { name: 'Devin', icon: '/icons/devin.avif', use: 'Full-stack tasks' },
+  ],
+  specialized: [
+    { name: 'Manus', icon: '/icons/manus.svg', use: 'Deep technical research & documentation analysis', filter: 'brightness(0) invert(1)' },
+    { name: 'Grok', icon: '/icons/grok.svg', use: 'Creative solutions when others converge on the same approach', filter: 'brightness(0) invert(1)' },
+    { name: 'Gemini', icon: '/icons/gemini.svg', use: 'Heavy lifting: data extraction, bulk translations, query generation' },
+    { name: 'DeepSeek', icon: '/icons/deepseek.svg', use: 'Complex calculations & data science workloads' },
+  ],
+  validation: [
+    { name: 'GPT-5', icon: '/icons/openai.svg', use: 'Double-checking other AI outputs & Research', filter: 'brightness(0) invert(1)' },
+    { name: 'GitHub Copilot', icon: '/icons/github-copilot.svg', use: 'Reviews published code on every push' }
+  ]
+};
+
+const orchestrationApproach = [
   {
-    title: 'Define & Decompose',
-    description: 'Transform ambiguous requirements into structured AI prompts and system architectures. Context-aware requirement extraction, stakeholder intent mapping.'
+    title: 'Pioneer',
+    description: 'Seen every AI hype cycle since 2014 AlexNet. I know what works vs. what\'s hype, when AI fails, and how to contain those failures.',
+    Icon: Award
   },
   {
-    title: 'Design & Prototype',
-    description: 'AI-powered architecture decisions and rapid prototyping. Generate system designs, API contracts, database schemas. Simulate edge cases before writing code.'
+    title: 'Production Systems',
+    description: 'Mission-critical systems running on my AI workflow outputs.',
+    Icon: Target
   },
   {
-    title: 'Generate & Orchestrate',
-    description: 'Multi-agent flows that plan, write, refactor, or explain—24/7 code agents used selectively for scaffolds, docs, and safe refactors.'
+    title: 'Context Engineering',
+    description: 'Feed AI the right information in the right order. No codebase contamination. First-iteration success through strategic prompting.',
+    Icon: Music
   },
   {
-    title: 'Test & Validate',
-    description: 'Comprehensive AI-augmented testing strategies. Generate test cases from requirements, property-based testing, mutation testing, security scanning.'
-  },
-  {
-    title: 'Deploy & Monitor',
-    description: 'Zero-downtime deployments with AI-powered rollback decisions. Anomaly detection, performance optimization suggestions, predictive scaling.'
-  },
-  {
-    title: 'Optimize & Evolve',
-    description: 'Continuous improvement through usage analysis. AI identifies technical debt, suggests refactors, monitors for deprecated patterns.'
+    title: 'Human-Verified Accuracy',
+    description: 'Write critical business logic manually. 100% review rate. Zero AI errors in production.',
+    Icon: Check
   }
 ];
 
-const ecosystems = [
-  { name: 'OpenAI', icon: '/icons/openai.svg', x: 15, y: 20, size: 'lg', filter: 'brightness-0 invert' },
-  { name: 'Claude', icon: '/icons/claude.svg', x: 75, y: 15, size: 'xl', filter: 'none' },
-  { name: 'Qwen', icon: '/icons/qwen.svg', x: 45, y: 50, size: 'lg', filter: 'none' },
-  { name: 'DeepSeek', icon: '/icons/deepseek.svg', x: 25, y: 90, size: 'md', filter: 'none' },
-  { name: 'Gemini', icon: '/icons/gemini.svg', x: 60, y: 85, size: 'md', filter: 'none' },
-  { name: 'Ollama', icon: '/icons/ollama.svg', x: 85, y: 45, size: 'lg', filter: 'brightness-0 invert' }
-];
-
-const outcomes = [
-  { display: 'Correctness', color: 'green-400' },
-  { display: 'Speed', color: 'cyan-400' },
-  { display: 'Reliability', color: 'violet-600' },
-  { display: 'Auditability', color: 'yellow-400' }
+const clientValue = [
+  {
+    value: 2.5,
+    suffix: 'x',
+    label: 'Senior-Level Productivity',
+    colorClass: 'text-cyan-400',
+    description: 'At architect level - harder than junior boosts'
+  },
+  {
+    value: 16,
+    suffix: '+',
+    label: 'Production Systems Shipped',
+    colorClass: 'text-pink-400',
+    description: 'Mission-critical systems with real users'
+  },
+  {
+    value: 98,
+    suffix: '%',
+    label: 'Faster Analysis (Pathology AI)',
+    colorClass: 'text-violet-400',
+    description: 'Expert-validated diagnostic improvement'
+  },
+  {
+    value: 0,
+    suffix: '',
+    label: 'AI Errors in Production',
+    colorClass: 'text-green-400',
+    description: 'Zero hallucinations shipped to users'
+  }
 ];
 
 export default function AIEngineSection() {
   const [isInView, setIsInView] = useState(false);
-  const [activeStage, setActiveStage] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [activeApproach, setActiveApproach] = useState(0);
+  const [expandedModel, setExpandedModel] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const pipelineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,255 +118,181 @@ export default function AIEngineSection() {
     return () => observer.disconnect();
   }, [isInView]);
 
-  // Auto-advance stages with reset on manual click and pause on hover
+  // Cycle through orchestration approaches
   useEffect(() => {
-    if (!isInView || isPaused) return;
+    if (!isInView) return;
     
     const interval = setInterval(() => {
-      setActiveStage(prev => (prev + 1) % stages.length);
-    }, 5000); // Increased from 3000ms to 5000ms for better readability
+      setActiveApproach(prev => (prev + 1) % orchestrationApproach.length);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [isInView, activeStage, isPaused]); // Reset timer when activeStage changes or paused state changes
-
-  // Smooth scroll to active stage
-  useEffect(() => {
-    if (pipelineRef.current && isInView) {
-      const stageWidth = 224; // w-56
-      const offset = activeStage * (stageWidth + 32); // gap-8
-      pipelineRef.current.scrollTo({
-        left: offset,
-        behavior: 'smooth'
-      });
-    }
-  }, [activeStage, isInView]);
+  }, [isInView]);
 
   return (
     <section 
       ref={sectionRef}
-      className="relative lg:py-24 overflow-hidden bg-gradient-to-b from-black via-[#0A0F1B] to-black"
+      className="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-black via-[#0A0515] to-black"
     >
-      {/* Animated background grid */}
-      <div className="absolute inset-0 opacity-20">
+      {/* Background gradient similar to Impact Architecture */}
+      <div className="absolute inset-0 opacity-30">
         <div 
           className="absolute inset-0"
           style={{
-            backgroundImage: `linear-gradient(90deg, transparent 0%, rgba(34, 211, 238, 0.05) 50%, transparent 100%),
-                             linear-gradient(0deg, transparent 0%, rgba(124, 58, 237, 0.05) 50%, transparent 100%)`,
-            backgroundSize: '60px 60px',
-            animation: 'grid-move 30s linear infinite',
-            willChange: 'transform',
-            transform: 'translate3d(0, 0, 0)'
+            backgroundImage: `
+              radial-gradient(circle at 30% 30%, rgba(34, 211, 238, 0.2) 0%, transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(124, 58, 237, 0.2) 0%, transparent 50%)
+            `,
+            transform: 'translateZ(0)',
+            willChange: 'transform'
           }}
         />
       </div>
 
-      <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
-          <SectionTitle 
-            title="AI In My Work"
-            subtitle="My AI-augmented product loop"
-            isInView={isInView}
-          />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
+        <SectionTitle 
+          title="AI At Work"
+          subtitle="My AI-augmented workflow"
+          isInView={isInView}
+        />
 
-          {/* Outcomes speedometers */}
-          <div 
-            className={`
-              grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16 place-items-center
-              ${isInView ? 'opacity-100' : 'opacity-0'}
-            `}
-            style={{
-              transform: isInView ? 'translate3d(0, 0, 0)' : 'translate3d(0, 2.5rem, 0)',
-              transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s',
-              willChange: 'transform, opacity'
-            }}
-          >
-            {outcomes.map((outcome, index) => (
-              <SpeedoMeter
-                key={index}
-                label={outcome.display}
-                color={outcome.color}
-                isInView={isInView}
-                delay={300 + index * 200}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Horizontal scrolling pipeline */}
+        {/* How I Use Each Model - Layered Diagram */}
         <div 
           className={`
-            relative
+            mb-20
             ${isInView ? 'opacity-100' : 'opacity-0'}
           `}
           style={{
-            transform: isInView ? 'translate3d(0, 0, 0)' : 'translate3d(0, 2.5rem, 0)',
-            transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s',
-            willChange: 'transform, opacity',
-            contain: 'layout style paint'
+            transform: isInView ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s'
           }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
         >
-          <div 
-            ref={pipelineRef}
-            className="flex gap-8 overflow-x-auto scrollbar-hide px-6 sm:px-12 lg:px-20 py-8"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {stages.map((stage, index) => (
-              <PipelineStage
-                key={index}
-                title={stage.title}
-                description={stage.description}
-                index={index}
-                isActive={activeStage === index}
-                onClick={() => setActiveStage(index)}
-              />
-            ))}
-          </div>
-
-          {/* Pipeline progress indicator */}
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5">
-            <div 
-              className="h-full bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 transition-all duration-500"
-              style={{ width: `${((activeStage + 1) / stages.length) * 100}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Ecosystem cloud */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 mt-12">
-          <div 
-            className={`
-              relative h-48 lg:h-64
-              ${isInView ? 'opacity-100' : 'opacity-0'}
-            `}
-            style={{
-              transform: isInView ? 'translate3d(0, 0, 0)' : 'translate3d(0, 2.5rem, 0)',
-              transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.7s',
-              willChange: 'transform, opacity'
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black rounded-2xl">
-              {/* Connection lines - rendered first so they appear under icons */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                <defs>
-                  <linearGradient id="line-gradient">
-                    <stop offset="0%" stopColor="rgba(34, 211, 238, 0.4)" />
-                    <stop offset="50%" stopColor="rgba(124, 58, 237, 0.4)" />
-                    <stop offset="100%" stopColor="rgba(219, 39, 119, 0.4)" />
-                  </linearGradient>
-                </defs>
-                {/* Connect sequential icons */}
-                {ecosystems.slice(0, -1).map((eco, i) => {
-                  const next = ecosystems[i + 1];
-                  return (
-                    <line
-                      key={`seq-${i}`}
-                      x1={`${eco.x}%`}
-                      y1={`${eco.y}%`}
-                      x2={`${next.x}%`}
-                      y2={`${next.y}%`}
-                      stroke="url(#line-gradient)"
-                      strokeWidth="2"
-                      strokeDasharray="5,5"
-                      opacity="0.5"
-                    />
-                  );
-                })}
-                {/* Additional connections: DeepSeek-OpenAI and Claude-Ollama */}
-                <line
-                  x1={`${ecosystems[3].x}%`}
-                  y1={`${ecosystems[3].y}%`}
-                  x2={`${ecosystems[0].x}%`}
-                  y2={`${ecosystems[0].y}%`}
-                  stroke="url(#line-gradient)"
-                  strokeWidth="2"
-                  strokeDasharray="5,5"
-                  opacity="0.5"
-                />
-                <line
-                  x1={`${ecosystems[1].x}%`}
-                  y1={`${ecosystems[1].y}%`}
-                  x2={`${ecosystems[5].x}%`}
-                  y2={`${ecosystems[5].y}%`}
-                  stroke="url(#line-gradient)"
-                  strokeWidth="2"
-                  strokeDasharray="5,5"
-                  opacity="0.5"
-                />
-              </svg>
-              
-              {/* Ecosystem icons */}
-              {ecosystems.map((eco, index) => (
-                <div
-                  key={index}
-                  className={`
-                    absolute transform -translate-x-1/2 -translate-y-1/2
-                    transition-all duration-1000 hover:scale-110
-                    cursor-pointer group
-                  `}
-                  style={{
-                    left: `${eco.x}%`,
-                    top: `${eco.y}%`,
-                    animationDelay: `${index * 150}ms`
-                  }}
-                >
-                  <div 
-                    className={`
-                      p-3 rounded-full
-                      bg-white/5 backdrop-blur-sm
-                      border-2 border-white/10 group-hover:border-white/30
-                      transition-all duration-300
-                      flex items-center justify-center
-                      ${eco.size === 'xl' ? 'w-16 h-16' : eco.size === 'lg' ? 'w-14 h-14' : eco.size === 'md' ? 'w-12 h-12' : 'w-10 h-10'}
-                    `}
-                  >
+          <div className="space-y-6">
+            {/* Top Layer: Analysis & Planning */}
+            <div className="relative rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-500 p-6">
+              <h4 className="text-sm font-semibold text-cyan-400 mb-4">ANALYSIS & PLANNING</h4>
+              <div className="grid md:grid-cols-2 gap-4">
+                {aiModels.analysis.map((model, index) => (
+                  <div key={index} className="flex items-start gap-3">
                     <img 
-                      src={eco.icon} 
-                      alt={eco.name}
-                      className={`
-                        filter ${eco.filter} opacity-90 group-hover:opacity-100
-                        transition-opacity duration-300
-                        ${eco.size === 'xl' ? 'w-8 h-8' : eco.size === 'lg' ? 'w-7 h-7' : eco.size === 'md' ? 'w-6 h-6' : 'w-5 h-5'}
-                      `}
+                      src={model.icon} 
+                      alt={model.name} 
+                      className="w-6 h-6 mt-0.5"
+                      style={{ filter: model.filter || 'none' }}
                     />
+                    <div>
+                      <p className="text-white font-medium">{model.name}</p>
+                      <p className="text-xs text-gray-400">{model.use}</p>
+                    </div>
                   </div>
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-xs text-gray-400 whitespace-nowrap">{eco.name}</span>
-                  </div>
-                  <div className="absolute inset-0 rounded-full bg-white/10 blur-lg scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                ))}
+              </div>
+            </div>
+
+            {/* Middle Layer: Autonomous & Specialized */}
+            <div className="grid lg:grid-cols-2 gap-6">
+              <div className="relative rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-500 p-6">
+                <h4 className="text-sm font-semibold text-yellow-400 mb-4">24/7 AUTONOMOUS AGENTS</h4>
+                <div className="space-y-3">
+                  {aiModels.autonomous.map((model, index) => (
+                    <div key={index} className="flex items-center gap-3 p-2 rounded-lg bg-white/5">
+                      <img 
+                        src={model.icon} 
+                        alt={model.name} 
+                        className="w-5 h-5"
+                        style={{ filter: model.filter || 'none' }}
+                      />
+                      <div className="flex-1">
+                        <span className="text-sm text-white">{model.name}</span>
+                        <span className="text-xs text-gray-400 ml-2">{model.use}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+                <p className="text-xs text-gray-400 mt-3 italic">Working while I sleep, reviewed upon waking</p>
+              </div>
+
+              <div className="relative rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-500 p-6">
+                <h4 className="text-sm font-semibold text-violet-400 mb-4">SPECIALIZED TASKS</h4>
+                <div className="space-y-3">
+                  {aiModels.specialized.map((model, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <img 
+                        src={model.icon} 
+                        alt={model.name} 
+                        className="w-6 h-6 mt-0.5"
+                        style={{ filter: model.filter || 'none' }}
+                      />
+                      <div>
+                        <p className="text-white font-medium">{model.name}</p>
+                        <p className="text-xs text-gray-400">{model.use}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Layer: Validation */}
+            <div className="relative rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-500 p-6">
+              <h4 className="text-sm font-semibold text-green-400 mb-4">VALIDATION LAYER</h4>
+              <div className="grid md:grid-cols-2 gap-4">
+                {aiModels.validation.map((model, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <img 
+                      src={model.icon} 
+                      alt={model.name} 
+                      className="w-6 h-6 mt-0.5"
+                      style={{ filter: model.filter || 'none' }}
+                    />
+                    <div>
+                      <p className="text-white font-medium">{model.name}</p>
+                      <p className="text-xs text-gray-400">{model.use}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <style jsx>{`
-        @keyframes grid-move {
-          0% { transform: translate3d(0, 0, 0); }
-          100% { transform: translate3d(60px, 60px, 0); }
-        }
-        
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-          from { transform: translateY(10px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-        
-        .animate-slideUp {
-          animation: slideUp 0.3s ease-out;
-        }
-      `}</style>
+        {/* My Unique Approach */}
+        <div 
+          className={`
+            mb-20
+            ${isInView ? 'opacity-100' : 'opacity-0'}
+          `}
+          style={{
+            transform: isInView ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s'
+          }}
+        >
+          <h3 className="text-xl font-bold mb-8 text-white text-center">What Makes My Approach Different</h3>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {orchestrationApproach.map((approach, index) => (
+              <div
+                key={index}
+                className={`
+                  relative p-6 rounded-2xl
+                  bg-gradient-to-br from-white/5 to-white/[0.02]
+                  backdrop-blur-xl border transition-all duration-500
+                  ${activeApproach === index 
+                    ? 'border-white/30 shadow-2xl' 
+                    : 'border-white/10 hover:border-white/20'}
+                  transform hover:scale-[1.02]
+                `}
+              >
+                <div className="flex justify-center mb-4">
+                  <approach.Icon className={`w-8 h-8 ${activeApproach === index ? 'text-cyan-400' : 'text-gray-400'} transition-colors duration-500`} />
+                </div>
+                <h4 className="font-semibold text-white mb-2 text-center">{approach.title}</h4>
+                <p className="text-sm text-gray-400 leading-relaxed">{approach.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

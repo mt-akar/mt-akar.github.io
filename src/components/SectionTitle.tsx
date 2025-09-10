@@ -17,7 +17,7 @@ export default function SectionTitle({ title, subtitle, isInView = true, classNa
         `}
       >
         <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-          <span className="bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-cyan-400 to-violet-600 bg-clip-text text-transparent">
             {title}
           </span>
         </h2>

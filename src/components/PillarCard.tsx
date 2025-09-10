@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 interface PillarCardProps {
   title: string;
+  description?: string;
   skills: string[];
   microCase: {
     title: string;
@@ -17,6 +18,7 @@ interface PillarCardProps {
 
 export default function PillarCard({
   title,
+  description,
   skills,
   microCase,
   position,
@@ -64,7 +66,7 @@ export default function PillarCard({
         }}
       >
         {/* Title */}
-        <h3 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${
+        <h3 className={`text-2xl font-bold mb-2 transition-colors duration-300 ${
           isActive 
             ? 'bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent' 
             : 'text-gray-300'
@@ -72,11 +74,18 @@ export default function PillarCard({
           {title}
         </h3>
 
+        {/* Description */}
+        {description && (
+          <p className="text-sm text-gray-400 mb-4 leading-relaxed">
+            {description}
+          </p>
+        )}
+
         {/* Skills as chips */}
         <div className="mb-4">
           <div className="flex flex-wrap gap-1.5">
             {/* Always visible chips */}
-            {skills.slice(0, 3).map((skill, index) => (
+            {skills.slice(0, 4).map((skill, index) => (
               <span
                 key={index}
                 className={`
@@ -93,16 +102,16 @@ export default function PillarCard({
             ))}
             
             {/* "+X more" chip when not hovered */}
-            {!isHovered && skills.length > 3 && (
+            {!isHovered && skills.length > 4 && (
               <span className="inline-block px-2 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-500">
-                +{skills.length - 3} more
+                +{skills.length - 4} more
               </span>
             )}
             
             {/* Additional chips when hovered */}
-            {isHovered && skills.slice(3).map((skill, index) => (
+            {isHovered && skills.slice(4).map((skill, index) => (
               <span
-                key={index + 3}
+                key={index + 4}
                 className={`
                   inline-block px-2 py-1 text-xs rounded-full
                   bg-white/5 border border-white/20 text-gray-200

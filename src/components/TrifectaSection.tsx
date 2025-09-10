@@ -8,14 +8,14 @@ const pillars = [
   {
     id: 'ai-blockchain',
     title: 'AI & Web3 & Cloud Expertise',
+    description: 'I bridge cutting-edge technologies to create solutions that are both innovative and practical, ensuring your projects stay ahead of the curve.',
     skills: [
-      'Machine Learning',
       'Agent Tooling',
       'Prompt Engineering',
-      'LLM Inference',
       'Payments Rails',
-      'Protocol Design',
       'Distributed Systems',
+      'LLM Inference',
+      'Protocol Design',
       'Node Running',
       'Smart Contracts',
       'Block Data Analysis'
@@ -30,14 +30,15 @@ const pillars = [
   {
     id: 'entrepreneurial',
     title: 'Entrepreneurial Mindset',
+    description: 'I think like an owner, driving business outcomes and strategic growth while navigating risks and opportunities with confidence.',
     skills: [
       'In-house Entrepreneur',
-      'Product Strategy',
-      'Go-to-market',
       'Business Outcomes',
+      'Product Strategy',
+      'Risk Management',
+      'Go-to-market',
       'Hiring for Leverage',
       'Negotiations',
-      'Risk Management',
       'Compliance Awareness',
       'Mentorship',
       'Co-founding'
@@ -52,11 +53,13 @@ const pillars = [
   {
     id: 'ux-focus',
     title: 'User Experience Focus',
+    description: 'I prioritize intuitive design and accessibility, creating products that users love and can easily adopt, reducing friction and increasing engagement.',
     skills: [
+      'Human-First',
       'Feels Natural',
-      'Usability Feedback',
+      'Accessibile',
       'Onboarding that Teaches',
-      'Accessibility',
+      'Usability Feedback',
       'Progressive Disclosure',
       'Performance Budgets',
       'Thoughtful Microcopy',
@@ -128,7 +131,7 @@ export default function TrifectaSection() {
       <div className="relative z-30">
         <SectionTitle 
           title="Personal Trifecta"
-          subtitle="3 Industry Skills To Define Me"
+          subtitle="3 Industry Skills To Define My Work"
           isInView={isInView}
         />
       </div>
@@ -147,6 +150,7 @@ export default function TrifectaSection() {
             >
               <PillarCard
                 title={pillar.title}
+                description={pillar.description}
                 skills={pillar.skills}
                 microCase={pillar.microCase}
                 position="top"
@@ -245,6 +249,7 @@ export default function TrifectaSection() {
             >
               <PillarCard
                 title={pillars[0].title}
+                description={pillars[0].description}
                 skills={pillars[0].skills}
                 microCase={pillars[0].microCase}
                 position="top"
@@ -263,6 +268,7 @@ export default function TrifectaSection() {
             >
               <PillarCard
                 title={pillars[1].title}
+                description={pillars[1].description}
                 skills={pillars[1].skills}
                 microCase={pillars[1].microCase}
                 position="bottom-left"
@@ -281,6 +287,7 @@ export default function TrifectaSection() {
             >
               <PillarCard
                 title={pillars[2].title}
+                description={pillars[2].description}
                 skills={pillars[2].skills}
                 microCase={pillars[2].microCase}
                 position="bottom-right"

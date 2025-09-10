@@ -167,7 +167,7 @@ export default function Home() {
                   // Date Night, Portfolio
                   // Roger that, Web3 Studio, Spark, Kinesis Dotnet, Kinesis Explorer
                   // */}
-                  <AnimatedCounter end={16} duration={5000} delay={300} suffix="+" easing="easeInQuad" />
+                  <AnimatedCounter end={16} duration={5000} delay={300} easing="easeInQuad" />
                 </div>
                 <p className="text-sm text-gray-500">Projects spearheaded</p>
               </div>

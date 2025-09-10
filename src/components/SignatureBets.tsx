@@ -8,27 +8,23 @@ const bets = [
   {
     title: "AI won't replace engineers",
     description: "Saying 'AI will replace engineers' is like saying a dishwasher will replace Thanksgiving. It may do the cleanup for you but it will not make grandma happy, you will.",
-    myApproach: "I orchestrate an AI agent team to supercharge my productivity.",
     callToAction: "Orchestrate your agents and own the revolution."
   },
   {
+    title: "VC is a beauty contest",
+    description: "Venture capital turned builders into pitch deck artists. It's like watching Michelangelo spend his days color-matching PowerPoint themes instead of painting the Sistine Chapel. The real impact is built by engineers too busy shipping.",
+    callToAction: "Build something people want, not what VCs want to hear."
+  },
+  {
+    title: "Agile is corporate theater",
+    description: "Agile became the very bureaucracy it was meant to destroy. Sprint planning is a séance where we summon the ghost of productivity. The best teams ship daily and treat production as their retrospective.",
+    callToAction: "Stop planning sprints, start shipping products."
+  },
+  {
     title: "You're underusing AI",
-    description: "Everyone is leaving massive untapped potential on the table, with varying severity. I am shocked to see this giant wrecking ball used to open nuts, it is nuts. I am committed to teach everyone to harness AI's full potential.",
-    myApproach: "I maintain the 90-10% exploit/explore balance to ensure I keep updated with the AI revolution.",
+    description: "You are leaving massive untapped potential on the table, with varying severity. I am shocked to see this giant wrecking ball used to open nuts, it is nuts.",
     callToAction: "Build AI into the daily loop, not just the sprint planning."
   },
-  {
-    title: "Crypto is the future",
-    description: "The open programmable money will replace the old rails sooner than you think. Trust is becoming designed, open, and proven, not assumed. Money is becoming owned by users of the internet, not deposited.",
-    myApproach: "I embrace the programmable money in my work and personal life.",
-    callToAction: "Educate yourself to protect from people praying on blockchain-uneducated."
-  },
-  {
-    title: "AI Agents will use crypto more than humans",
-    description: "As the next generation of money is evolving, the next generation money users have arrived: AI Agents. Get used to AI agents managing budgets, auto approving spending aligned with larger goals, and making micro transactions between each other with a volume 100x of humans.",
-    myApproach: "I AI-agent-proof all my software projects.",
-    callToAction: "Learn about AI and blockchain before it's too late."
-  }
 ];
 
 export default function SignatureBets() {

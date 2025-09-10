@@ -129,7 +129,6 @@ export default function PipelineStage({
                 willChange: 'opacity'
               }}
             />
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600" />
           </div>
         )}
       </div>
