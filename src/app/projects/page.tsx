@@ -15,105 +15,7 @@ import {
 import PathologyAIProject from './PathologyAI'
 import CointributeProject from './Cointribute'
 import InclusAIProject from './InclusAI'
-
-
-// Coin Checkout Section
-function CoinCheckoutSection() {
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-  
-  return (
-    <section ref={ref} className="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-l from-orange-400/20 to-red-600/20 rounded-full blur-3xl" />
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 mb-6">
-              <Rocket className="w-4 h-4 text-orange-400" />
-              <span className="text-sm font-medium text-orange-400">Web3 • Infrastructure</span>
-            </div>
-            
-            <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-red-500 to-pink-600 bg-clip-text text-transparent">
-              Coin Checkout
-            </h2>
-            
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              Stripe-like API for crypto payments with enterprise-grade infrastructure
-            </p>
-            
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5" />
-                <div>
-                  <div className="font-semibold text-gray-800 dark:text-gray-200">Multi-Chain Support</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">6+ blockchains, 15+ tokens</div>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5" />
-                <div>
-                  <div className="font-semibold text-gray-800 dark:text-gray-200">Price Oracles</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Chainlink integration for accurate pricing</div>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5" />
-                <div>
-                  <div className="font-semibold text-gray-800 dark:text-gray-200">Self-Custody</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Merchants maintain full control</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex flex-wrap gap-2">
-              {['TypeScript', 'Solidity', 'Smart Contracts', 'Chainlink', 'WalletConnect'].map((tech) => (
-                <span key={tech} className="px-3 py-1 text-xs font-medium rounded-full bg-orange-100/80 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 border border-orange-200/50 dark:border-orange-700/50">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20">
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-500">Sub-1s</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Transaction Time</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-red-500">6+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Blockchains</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-pink-500">15+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Tokens</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-500">100%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Self-Custody</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  )
-}
+import CoinCheckoutProject from './CoinCheckout'
 
 // Library Projects Section (Combined)
 function LibraryProjectsSection() {
@@ -299,7 +201,7 @@ export default function ProjectsPage() {
     { name: 'Pathology AI', component: PathologyAIProject },
     { name: 'Cointribute', component: CointributeProject },
     { name: 'InclusAI', component: InclusAIProject },
-    { name: 'Coin Checkout', component: CoinCheckoutSection },
+    { name: 'Coin Checkout', component: CoinCheckoutProject },
     { name: 'Libraries', component: LibraryProjectsSection },
     { name: 'Date Night', component: DateNightGameSection }
   ]

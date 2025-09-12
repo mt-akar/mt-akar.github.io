@@ -166,7 +166,7 @@ export default function Home() {
                 <div className="space-y-1">
                   <div className="text-3xl sm:text-4xl font-bold text-violet-400">
                     {/* Pathology AI, Cointribute, InclusAI, Coin Checkout, RPC Studio
-                    // Albiders, Test Maker, Habiracker, Bottom Nav Layout
+                    // Albiders, Test Maker, Habiracker, Bottom Nav Layout, Parator
                     // Date Night, Portfolio
                     // Roger that, Web3 Studio, Spark, Kinesis Dotnet, Kinesis Explorer
                     // */}

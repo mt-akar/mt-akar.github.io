@@ -25,31 +25,42 @@ export default function BreakdownModal({ isOpen, onClose }: BreakdownModalProps)
   }, [isOpen]);
 
   const projects = [
-    // AI/Healthcare
-    { name: 'Pathology AI', category: 'AI/Healthcare' },
-    { name: 'InclusAI', category: 'AI/Healthcare' },
+    // Healthcare
+    { name: 'Pathology AI', category: 'Healthcare' },
+      
+    // Accessibility
+    { name: 'InclusAI', category: 'Accessibility' },
     
     // Web3/Crypto
-    { name: 'Cointribute', category: 'Web3/Crypto' },
-    { name: 'Coin Checkout', category: 'Web3/Crypto' },
     { name: 'RPC Studio', category: 'Web3/Crypto' },
     { name: 'Web3 Studio', category: 'Web3/Crypto' },
     { name: 'Spark', category: 'Web3/Crypto' },
+
+    // Fintech
+    { name: 'Cointribute', category: 'Fintech' },
+    { name: 'Coin Checkout', category: 'Fintech' },
+    { name: 'Parator', category: 'Fintech' },
     
-    // SaaS/Products
-    { name: 'Test Maker', category: 'SaaS/Products' },
-    { name: 'Date Night', category: 'SaaS/Products' },
+    // Design
+    { name: 'Test Maker', category: 'Design' },
     
-    // Education/Startups
-    { name: 'Albiders', category: 'Education/Startups' },
+    // Education
+    { name: 'Albiders', category: 'Education' },
     
+    // Productivity
+    { name: 'Habiracker', category: 'Productivity' },
+      
     // Developer Tools
     { name: 'Kinesis Dotnet', category: 'Developer Tools' },
     { name: 'Kinesis Explorer', category: 'Developer Tools' },
     { name: 'Bottom Nav Layout', category: 'Developer Tools' },
-    { name: 'Habiracker', category: 'Developer Tools' },
     { name: 'Roger that', category: 'Developer Tools' },
-    { name: 'Portfolio', category: 'Developer Tools' }
+      
+    // Game
+    { name: 'Date Night', category: 'Game' },
+      
+    // Portfolio
+    { name: 'Portfolio', category: 'Portfolio' },
   ];
 
   const valueBreakdown = [
