@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Target, Music, Check, Award } from 'lucide-react';
+import { Server, Layers, Check, Award } from 'lucide-react';
 import SectionTitle from './SectionTitle';
 import AnimatedCounter from './AnimatedCounter';
 
@@ -22,7 +22,7 @@ const aiModels: {
 } = {
   analysis: [
     { name: 'Claude Opus', icon: '/icons/claude.svg', use: 'Deep requirement analysis & architecture decisions' },
-    { name: 'Claude Sonnet', icon: '/icons/claude.svg', use: 'Code generation, planning & reviews' }
+    { name: 'GPT-5', icon: '/icons/openai.svg', use: 'Strategic planning and decision-making', filter: 'brightness(0) invert(1)' }
   ],
   autonomous: [
     { name: 'Cursor Agents', icon: '/icons/cursor.svg', use: 'Autonomous coding' },
@@ -30,6 +30,7 @@ const aiModels: {
     { name: 'Devin', icon: '/icons/devin.avif', use: 'Full-stack tasks' },
   ],
   specialized: [
+    { name: 'Claude Sonnet', icon: '/icons/claude.svg', use: 'Code generation, planning & reviews' },
     { name: 'Manus', icon: '/icons/manus.svg', use: 'Deep technical research & documentation analysis', filter: 'brightness(0) invert(1)' },
     { name: 'Grok', icon: '/icons/grok.svg', use: 'Creative solutions when others converge on the same approach', filter: 'brightness(0) invert(1)' },
     { name: 'Gemini', icon: '/icons/gemini.svg', use: 'Heavy lifting: data extraction, bulk translations, query generation' },
@@ -50,12 +51,12 @@ const orchestrationApproach = [
   {
     title: 'Production Systems',
     description: 'Mission-critical systems running on my AI workflow outputs.',
-    Icon: Target
+    Icon: Server
   },
   {
     title: 'Context Engineering',
     description: 'Feed AI the right information in the right order. No codebase contamination. First-iteration success through strategic prompting.',
-    Icon: Music
+    Icon: Layers
   },
   {
     title: 'Human-Verified Accuracy',

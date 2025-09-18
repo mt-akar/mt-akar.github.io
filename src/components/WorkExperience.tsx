@@ -10,6 +10,7 @@ interface Experience {
   location: string
   period: string
   logo?: string
+  projectUrl?: string
   highlights: string[]
   languages?: string[]
   tech?: string[]
@@ -81,7 +82,7 @@ const experiences: Experience[] = [
     metrics: []
   },
   {
-    role: 'Co-Founder & Technical Lead',
+    role: 'Founder & Technical Lead',
     company: 'Albiders',
     product: 'AI-Powered Education Platform',
     location: 'Ankara, Türkiye',
@@ -89,20 +90,59 @@ const experiences: Experience[] = [
     logo: '/icons/albiders.svg',
     highlights: [
       'Founded EdTech startup and led cross-functional team of 17 (engineers, designers, educators, content creators) while managing diverse stakeholders from investors to educational specialists.',
-      'Delivered MVP in 8 months by managing 3 freelance engineers through Waterfall methodology, developing backend with ASP.NET, MSSQL, and Azure Web App.',
+      'Managed 3 freelance engineers through Waterfall methodology, developing backend with ASP.NET, MSSQL, and Azure Web App.',
       'Expanded platform to mobile by developing native Android app with offline video playback, picture-in-picture mode, and push notifications using Kotlin.',
       'Eliminated manual test syncing (~3 minutes/test) for students by building a computer vision module using OpenCV and Java to automatically scan and grade papers via mobile camera.',
       'Established project management and engineering practices using Azure DevOps for requirements tracking, CI/CD pipelines, and automated testing despite challenges with freelancer compliance.',
       'Written 1200+ pages of comprehensive documentation including proposals, architecture diagrams, requirements, acceptance criteria, design docs, API specs, and deployment guides.',
-      'Successfully negotiated and executed equity sale to co-founder, completing exit after strategic disagreement on product direction.'
+      'Successfully negotiated and executed equity sale to partner, completing exit after strategic disagreement on product direction.'
     ],
     languages: ['C#', 'Kotlin', 'Java', 'SQL', 'JavaScript'],
     tech: ['ASP.NET', 'Android', 'OpenCV', 'MSSQL', 'Git', 'Azure DevOps', 'Azure Web App'],
     nonFunctional: ['Entrepreneurship', 'Computer Vision', 'Freelancer Management', 'Project Management', 'Waterfall', 'Stakeholder Management', 'Exit Execution'],
     metrics: [
       { value: '17', label: 'Team Members Led' },
-      { value: '8', label: 'Months to MVP' },
+      { value: '1200+', label: 'Pages of Documentation' },
       { value: '1', label: 'Successful Exit' },
+    ]
+  },
+  {
+    role: 'Software Engineering Intern',
+    company: 'ICT Certify',
+    product: 'ISO/IEC 15504 (SPICE) Certification Tool',
+    location: 'Ankara, Türkiye',
+    period: '05/2020 - 08/2020',
+    highlights: [
+      'Shortened ISO/IEC 15504 - SPICE certification assessment process by 27%, directly reducing staff cost by leading a team of 4 developers to build a certification tool using ASP.NET, programmatic PDF generation, and MSSQL.',
+      'Completed 4 different software quality certifications during internship: ISO/IEC 27001 (Information Security Management), ISO/IEC 15504 (SPICE), ISO/IEC 15408 (Common Criteria), and ISO/IEC 18045 (CEM), qualifying me to conduct professional assessments.',
+      'Provided 6 months of post-internship technical support to the company, training new developers and advising on critical infrastructure and architecture decisions.',
+    ],
+    languages: ['C#', 'SQL', 'XML'],
+    tech: ['ASP.NET', 'Open XML', 'MSSQL', 'ISO Standards', 'Process Assessment'],
+    nonFunctional: ['Process Optimization', 'Team Leadership', 'Knowledge Transfer', 'Quality Assurance', 'Compliance'],
+    metrics: [
+      { value: '27%', label: 'Process Time Reduction' },
+      { value: '4', label: 'ISO Certifications Earned' },
+      { value: '6mo', label: 'Post-Employment Support' },
+    ]
+  },
+  {
+    role: 'iOS Developer Intern',
+    company: 'Düzce Municipality',
+    product: 'Beyaz Masa',
+    location: 'Düzce, Türkiye',
+    period: '05/2017 - 09/2017',
+    projectUrl: 'https://apps.apple.com/us/app/beyazmasa-düzce/id1494943642',
+    highlights: [
+      'Solo-developed the complete iOS application for Düzce Municipality as an intern, app still in use 8+ years later.'
+    ],
+    languages: ['Objective-C', 'SQL'],
+    tech: ['iOS', 'Xcode', 'UIKit', 'SQLite', 'VMware', 'MacOS VM'],
+    nonFunctional: ['Resource Optimization', 'Government Compliance', 'Self-Sufficiency'],
+    metrics: [
+      { value: '100K+', label: 'Citizens Served' },
+      { value: '8+', label: 'Years in Production' },
+      { value: '1', label: 'Solo Developer' },
     ]
   }
 ]
@@ -114,8 +154,8 @@ export default function WorkExperience() {
     offset: ['start end', 'end start']
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.95, 1])
+  // Removed opacity animation - it was making content unreadable on mobile
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0.98, 1])
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
@@ -142,16 +182,16 @@ export default function WorkExperience() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto"
           >
             
           </motion.p>
         </div>
 
         {/* Timeline with scroll transforms */}
-        <motion.div 
+        <motion.div
           ref={containerRef}
-          style={{ opacity, scale }}
+          style={{ scale }}
           className="relative"
         >
           {/* Vertical Line - Now on the left */}
@@ -203,29 +243,45 @@ function ExperienceCard({ experience, index }: { experience: Experience; index: 
           } rounded-2xl blur-xl transition-all duration-500`} />
           
           {/* Card Content */}
-          <div className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl">
+          <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 shadow-2xl">
             {/* Header */}
             <div className="flex items-start justify-between mb-6">
               <div className="flex-1">
-                <h3 className="text-2xl lg:text-3xl font-bold mb-2 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+                <h3 className="text-2xl lg:text-3xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                   {experience.role}
                 </h3>
                 <div className="flex flex-wrap items-center gap-2 text-sm mb-1">
-                  <span className="font-semibold text-cyan-600 dark:text-cyan-400">
+                  <span className="font-semibold text-cyan-400">
                     {experience.company}
                   </span>
                   <span className="text-gray-400">•</span>
-                  <span className="text-gray-600 dark:text-gray-400">
+                  <span className="text-gray-400">
                     {experience.location}
                   </span>
                 </div>
                 {experience.product && (
-                  <div className="text-sm font-medium text-violet-600 dark:text-violet-400 mb-1">
-                    {experience.product}
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-sm font-medium text-violet-400">
+                      {experience.product}
+                    </span>
+                    {experience.projectUrl && (
+                      <a
+                        href={experience.projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+                        aria-label="View project"
+                      >
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        <span className="font-medium">View Live</span>
+                      </a>
+                    )}
                   </div>
                 )}
                 <div className="mt-2 inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-cyan-400/10 to-violet-600/10 border border-cyan-400/20">
-                  <span className="text-sm font-medium text-cyan-600 dark:text-cyan-400">
+                  <span className="text-sm font-medium text-cyan-400">
                     {experience.period}
                   </span>
                 </div>
@@ -253,7 +309,7 @@ function ExperienceCard({ experience, index }: { experience: Experience; index: 
                   className="flex items-start gap-3"
                 >
                   <div className="mt-2 w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-violet-600 flex-shrink-0" />
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed">
                     {highlight}
                   </p>
                 </motion.div>
@@ -274,7 +330,7 @@ function ExperienceCard({ experience, index }: { experience: Experience; index: 
                     <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-violet-600 bg-clip-text text-transparent">
                       {metric.value}
                     </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    <div className="text-xs text-gray-400 mt-1">
                       {metric.label}
                     </div>
                   </motion.div>
@@ -293,7 +349,7 @@ function ExperienceCard({ experience, index }: { experience: Experience; index: 
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.3, delay: 0.5 + i * 0.03 }}
                       whileHover={{ scale: 1.08 }}
-                      className="px-2 py-0.5 text-[10px] font-medium rounded-md bg-indigo-100/60 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border border-indigo-200/50 dark:border-indigo-700/50"
+                      className="px-2 py-0.5 text-[10px] font-medium rounded-md bg-indigo-900/30 text-indigo-300 border border-indigo-700/50"
                     >
                       {lang}
                     </motion.span>
@@ -313,7 +369,7 @@ function ExperienceCard({ experience, index }: { experience: Experience; index: 
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.3, delay: 0.6 + i * 0.05 }}
                       whileHover={{ scale: 1.1 }}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-gradient-to-r from-cyan-400/10 to-violet-600/10 text-cyan-700 dark:text-cyan-300 border border-cyan-400/30 dark:border-cyan-400/20"
+                      className="px-3 py-1 text-xs font-medium rounded-full bg-gradient-to-r from-cyan-400/10 to-violet-600/10 text-cyan-300 border border-cyan-400/20"
                     >
                       {tech}
                     </motion.span>
@@ -329,7 +385,7 @@ function ExperienceCard({ experience, index }: { experience: Experience; index: 
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.3, delay: 0.7 + i * 0.05 }}
                       whileHover={{ scale: 1.05 }}
-                      className="px-3 py-1 text-xs font-medium rounded-lg bg-gray-100/80 dark:bg-gray-800/80 text-gray-600 dark:text-gray-400 border border-dashed border-gray-300 dark:border-gray-600"
+                      className="px-3 py-1 text-xs font-medium rounded-lg bg-gray-800/80 text-gray-400 border border-dashed border-gray-600"
                     >
                       {item}
                     </motion.span>

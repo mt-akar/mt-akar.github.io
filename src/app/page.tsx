@@ -158,7 +158,7 @@ export default function Home() {
               <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 mb-8">
                 <div className="space-y-1">
                   <div className="text-3xl sm:text-4xl font-bold text-cyan-400">
-                    <AnimatedCounter end={5} duration={5000} delay={0} easing="easeInQuad" />
+                    <AnimatedCounter end={6} duration={5000} delay={0} easing="easeInQuad" />
                   </div>
                   <p className="text-sm text-gray-500">Years shipping</p>
                 </div>
@@ -170,7 +170,7 @@ export default function Home() {
                     // Date Night, Portfolio
                     // Roger that, Web3 Studio, Spark, Kinesis Dotnet, Kinesis Explorer
                     // */}
-                    <AnimatedCounter end={16} duration={5000} delay={300} easing="easeInQuad" />
+                    <AnimatedCounter end={17} duration={5000} delay={300} easing="easeInQuad" />
                   </div>
                   <p className="text-sm text-gray-500">Projects spearheaded</p>
                 </div>
@@ -210,7 +210,9 @@ export default function Home() {
       <AIEngineSection />
 
       {/* Impact Architecture Section */}
+      {/*
       <ImpactArchitecture />
+      */}
 
       {/* Toolbox Section */}
       <ToolboxSection />

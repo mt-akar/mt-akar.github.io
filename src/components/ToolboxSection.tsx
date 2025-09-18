@@ -23,7 +23,9 @@ const toolGroups: ToolGroup[] = [
       { name: 'C#', iconName: 'csharp' },
       { name: 'Python', iconName: 'python' },
       { name: 'TypeScript', iconName: 'typescript' },
+      { name: 'Solidity', iconName: 'solidity', needsWhite: true },
       { name: 'JavaScript', iconName: 'javascript' },
+      { name: 'Move', iconName: 'sui' },
       { name: 'Bash', iconName: 'bash' },
       { name: 'Dart', iconName: 'dart' },
       { name: 'Go', iconName: 'go' },
@@ -54,7 +56,6 @@ const toolGroups: ToolGroup[] = [
   {
     category: 'Web3',
     tools: [
-      { name: 'Solidity', iconName: 'solidity', needsWhite: true },
       { name: 'Chainlink', iconName: 'chainlink' },
       { name: 'Metamask', iconName: 'metamask' },
       { name: 'Tether', iconName: 'tether' },
@@ -288,9 +289,9 @@ export default function ToolboxSection() {
           <div className="space-y-8">
             {/* Section Title */}
             <div className="text-center mb-12">
-              <SectionTitle 
+              <SectionTitle
                 title="Toolbox"
-                subtitle="Technologies I work with"
+                subtitle="Technologies I mastered"
                 isInView={isInView}
               />
             </div>

@@ -129,7 +129,7 @@ export default function BetCard({ title, description, implication, action, index
 
           <div
             className={`
-              space-y-4 overflow-hidden
+              space-y-4 overflow-hidden pr-8
               transition-all duration-500 ease-out
               ${isHovered ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
             `}
@@ -143,7 +143,7 @@ export default function BetCard({ title, description, implication, action, index
             )}
 
             {action && (
-              <div className="flex items-start space-x-3">
+              <div className="flex items-start space-x-3 pb-2">
                 <span className={`text-${color} font-bold text-sm uppercase tracking-wider mt-1`}>
                   Call to Action:
                 </span>

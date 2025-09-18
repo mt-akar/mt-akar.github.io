@@ -14,11 +14,11 @@ export default function EducationPage() {
     offset: ['start end', 'end start']
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.95, 1])
+  // Removed opacity animation - it was making content unreadable
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0.98, 1])
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+    <div className="min-h-screen bg-[#0F1218] dark:bg-black">
       <Header />
       
       {/* Education Section - Single section like Work Experience */}
@@ -46,7 +46,7 @@ export default function EducationPage() {
           {/* Content with scroll transforms */}
           <motion.div
             ref={containerRef}
-            style={{ opacity, scale }}
+            style={{ scale }}
           >
             {/* Education Card - Similar to Work Experience */}
             <motion.div
@@ -57,7 +57,7 @@ export default function EducationPage() {
             >
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400/20 via-violet-600/20 to-pink-600/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
-            <div className="relative bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+            <div className="relative bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden">
               {/* Header with gradient accent */}
               <div className="h-2 bg-gradient-to-r from-cyan-400 to-violet-600" />
               
@@ -68,13 +68,13 @@ export default function EducationPage() {
                       <GraduationCap className="w-6 h-6 text-violet-600 dark:text-violet-400" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                      <h3 className="text-2xl font-bold text-white mb-1">
                         Bilkent University
                       </h3>
-                      <p className="text-lg text-gray-600 dark:text-gray-400">
+                      <p className="text-lg text-gray-400">
                         BSc in Computer Science
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-500 mt-1 flex items-center gap-2">
+                      <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
                         <Calendar className="w-4 h-4" />
                         2016 - 2021 • Ankara
                       </p>
@@ -85,12 +85,12 @@ export default function EducationPage() {
                 {/* First Place Achievement - Subtle but prominent */}
                 <div className="mb-2 p-4 rounded-xl bg-gradient-to-r from-yellow-400/10 via-cyan-400/10 to-violet-600/10 border border-yellow-400/20">
                   <div className="flex items-center gap-3">
-                    <Trophy className="w-6 h-6 text-yellow-500" />
+                    <Trophy className="w-6 h-6 text-yellow-500 flex-shrink-0" />
                     <div>
-                      <span className="text-lg font-semibold text-gray-900 dark:text-white">
+                      <span className="text-lg font-semibold text-white">
                         First Placement in the Department
                       </span>
-                      <span className="ml-2 text-gray-600 dark:text-gray-400">
+                      <span className="ml-2 text-gray-400">
                         • Top-ranked graduate from the nation's premier CS program
                       </span>
                     </div>
@@ -122,35 +122,35 @@ export default function EducationPage() {
                 className="relative group h-full"
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-amber-600/20 to-amber-700/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6 h-full flex flex-col">
+                <div className="relative bg-gray-900 rounded-xl border border-gray-800 p-6 h-full flex flex-col">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-600/30 to-amber-700/30 flex items-center justify-center flex-shrink-0">
                       <Medal className="w-7 h-7 text-amber-700 dark:text-amber-600" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900 dark:text-white mb-1">
+                      <h4 className="font-bold text-white mb-1">
                         National Mathematics Olympiad
                       </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        <span className="font-semibold text-amber-700 dark:text-amber-600">Bronze Medal</span> • TÜBİTAK, Ankara
+                      <p className="text-sm text-gray-400">
+                        <span className="font-semibold text-amber-600">Bronze Medal</span> • TÜBİTAK, Ankara
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
+                      <p className="text-sm text-gray-500 mt-1">
                         11/2013
                       </p>
                     </div>
                   </div>
                   
                   <div className="space-y-3 flex-grow">
-                    <div className="p-3 rounded-lg bg-gradient-to-r from-amber-50 to-amber-100/50 dark:from-amber-900/20 dark:to-amber-800/20 border border-amber-600/20">
+                    <div className="p-3 rounded-lg bg-gradient-to-r from-amber-900/20 to-amber-800/20 border border-amber-600/20">
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                        THE national mathematics competition in Turkey, serving as the second selection stage 
-                        for the International Mathematical Olympiad (IMO) team. This achievement placed me among the top mathematical 
+                        Placed 9th in THE national mathematics competition in Turkey, serving as a selection stage 
+                        for the International Mathematical Olympiad (IMO) national team. This achievement placed me among the top mathematical 
                         minds in the nation.
                       </p>
-                      <p className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                      <p className="text-sm font-semibold text-white mb-2">
                         This achievement provided:
                       </p>
-                      <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                      <ul className="space-y-1 text-sm text-gray-400">
                         <li className="flex items-start gap-2">
                           <CheckCircle className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
                           <span>Additional points in national university entrance exam</span>
@@ -173,19 +173,19 @@ export default function EducationPage() {
                 className="relative group h-full"
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-slate-300/20 to-slate-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6 h-full flex flex-col">
+                <div className="relative bg-gray-900 rounded-xl border border-gray-800 p-6 h-full flex flex-col">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-300/30 to-slate-400/30 flex items-center justify-center flex-shrink-0">
                       <Medal className="w-7 h-7 text-slate-600 dark:text-slate-400" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900 dark:text-white mb-1">
+                      <h4 className="font-bold text-white mb-1">
                         Mediterranean Mathematics Olympiad
                       </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        <span className="font-semibold text-slate-600 dark:text-slate-400">Silver Medal</span> • Akdeniz University, Antalya
+                      <p className="text-sm text-gray-400">
+                        <span className="font-semibold text-slate-400">Silver Medal</span> • Akdeniz University, Antalya
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
+                      <p className="text-sm text-gray-500 mt-1">
                         05/2014
                       </p>
                     </div>
@@ -201,7 +201,7 @@ export default function EducationPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="mt-6 p-4 rounded-lg bg-gradient-to-r from-violet-600/5 via-cyan-400/5 to-pink-600/5 border border-gray-200 dark:border-gray-800"
             >
-              <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
+              <p className="text-sm text-gray-400 text-center">
                 <span className="font-semibold">Mathematics olympiads</span> are among the most prestigious academic competitions, 
                 testing advanced problem-solving, logical reasoning, and creative thinking—skills that directly translate to 
                 algorithm design, system architecture, and complex software engineering challenges. Additionally, to this day, mathemathics has stayed a great passion of mine.

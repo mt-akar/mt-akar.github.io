@@ -7,13 +7,13 @@ import ContinueExploring, { continueExploringPresets } from '@/components/Contin
 
 export default function ExperiencePage() {
   return (
-    <>
+    <div className="min-h-screen bg-[#0F1218] dark:bg-black overflow-x-hidden">
       <Header />
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+      <main className="text-white">
         <WorkExperience />
         <ContinueExploring {...continueExploringPresets.workExperience} />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

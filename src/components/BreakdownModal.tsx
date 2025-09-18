@@ -60,7 +60,7 @@ export default function BreakdownModal({ isOpen, onClose }: BreakdownModalProps)
     { name: 'Date Night', category: 'Game' },
       
     // Portfolio
-    { name: 'Portfolio', category: 'Portfolio' },
+    { name: 'akar.im', category: 'Portfolio' },
   ];
 
   const valueBreakdown = [
@@ -198,8 +198,7 @@ export default function BreakdownModal({ isOpen, onClose }: BreakdownModalProps)
                   </div>
                   <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6">
                     <p className="text-gray-300 leading-relaxed">
-                      Active development and product shipping since <strong className="text-cyan-400">2020</strong>. 
-                      This includes full-time work experience, startup founding, and independent project development.
+                      Active design, development and product shipping since <strong className="text-cyan-400">2020</strong>.
                     </p>
                   </div>
                 </div>

@@ -141,57 +141,34 @@ function HeroSection() {
 function ArchitectureSection() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [activeTab, setActiveTab] = useState(0)
 
-  const architectureTabs = [
+  const architectureComponents = [
     {
-      title: "Smart Contracts",
+      title: "Smart Contract Architecture",
       icon: Code2,
-      content: "Non-custodial payment processing with Permit2 for gasless approvals. Smart contracts deployed on Ethereum, Polygon, and more. All payments go directly to merchant wallets with automatic fee calculation.",
-      features: [
-        { label: "Permit2 Integration", value: "Gasless approvals" },
-        { label: "Fee Processing", value: "On-chain calculation" },
-        { label: "Multi-signature", value: "Enterprise security" },
-        { label: "Upgradeable", value: "Proxy pattern" }
-      ]
+      mainContent: "Non-custodial payment infrastructure where funds flow directly to merchant wallets without touching platform contracts. Non-upgradeable contracts provide immutable security properties - the audited code remains unchanged in perpetuity. Direct-to-merchant payment flow removes platform from the custody chain. Merchant-sponsored gas fees allow businesses to cover approval costs for their customers."
     },
     {
-      title: "Price Oracles", 
+      title: "Oracle-Powered Compliance",
       icon: Activity,
-      content: "Chainlink price feeds provide real-time, verifiable exchange rates. Supports cross-currency pricing where items can be priced in USD, ETH, or BTC but paid in any supported token.",
-      features: [
-        { label: "Data Provider", value: "Chainlink" },
-        { label: "Update Frequency", value: "Real-time" },
-        { label: "Price Deviation", value: "<0.1%" },
-        { label: "Fallback", value: "Multi-oracle" }
-      ]
+      mainContent: "Chainlink price oracles provide verifiable, tamper-proof on-chain exchange rates. This architecture removes the platform from price determination, reducing liability and compliance requirements. Cross-currency pricing enables merchants to price in USD, ETH, BTC, etc., accept any supported token, and pay out in their preferred payout currency, with oracle-verified rates ensuring transparent pricing across all transactions over all supported networks."
     },
     {
-      title: "Wallet Integration",
+      title: "Universal Wallet Access",
       icon: Wallet,
-      content: "Seamless integration with all major wallets through WalletConnect v2. Support for both custodial (exchange wallets) and non-custodial wallets. Mobile-optimized with deep linking.",
-      features: [
-        { label: "WalletConnect", value: "v2 Protocol" },
-        { label: "MetaMask", value: "Direct integration" },
-        { label: "Bitcoin Wallets", value: "6+ providers" },
-        { label: "Mobile Support", value: "Deep linking" }
-      ]
+      mainContent: "WalletConnect v2 provides standardized, secure connections to over 500 self-custody web3 wallet applications. Direct integrations with centralized exchange payment options including Binance Pay and Coinbase Pay completes comprehensive payment coverage. Mobile deep linking creates seamless payment flows where customers complete transactions without app switching."
     },
     {
-      title: "Merchant API",
+      title: "Immutable Audit Trail",
+      icon: Shield,
+      mainContent: "Every transaction, webhook, and merchant action is cryptographically logged and anchored to Polygon blockchain. Daily merkle tree snapshots create tamper-proof audit trails for each merchant. System-wide merkle roots are recorded every 10 minutes. This architecture provides cryptographic proof of all platform operations and enables independent verification of transaction history."
+    },
+    {
+      title: "Developer-First API",
       icon: Settings,
-      content: "RESTful API with comprehensive SDKs. Create payment sessions, manage webhooks, and track transactions. Idempotency keys and signed event logs ensure reliability and auditability.",
-      features: [
-        { label: "Authentication", value: "API Keys" },
-        { label: "Webhooks", value: "Event-driven" },
-        { label: "Rate Limiting", value: "DDoS protected" },
-        { label: "SDKs", value: "Multiple languages" }
-      ]
+      mainContent: "RESTful API with idempotency keys ensures operations produce consistent outcomes despite network interruptions. SDKs available in TypeScript, Python, and C# implement common patterns for payment processing. Webhooks are cryptographically signed to prevent replay attacks and ensure data integrity. Comprehensive documentation and example implementations accelerate integration."
     }
   ]
-
-  const currentTab = architectureTabs[activeTab]
-  const Icon = currentTab.icon
 
   return (
     <section ref={ref} className="relative py-20 bg-gray-50 dark:bg-gray-950">
@@ -206,195 +183,58 @@ function ArchitectureSection() {
             Technical Architecture
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Enterprise-grade infrastructure built for scale and reliability
+            Enterprise-grade infrastructure built for scale, security, and compliance
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* Tab Navigation */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-1"
-          >
-            {/* Mobile grid view */}
-            <div className="grid grid-cols-2 gap-2 lg:hidden">
-              {architectureTabs.map((tab, index) => {
-                const TabIcon = tab.icon
-                return (
-                  <button
-                    key={index}
-                    onClick={() => setActiveTab(index)}
-                    className={`p-3 rounded-lg transition-all text-center ${
-                      activeTab === index
-                        ? 'bg-orange-100 dark:bg-orange-900/30 border-b-2 border-orange-600'
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
-                    }`}
-                  >
-                    <TabIcon className={`w-5 h-5 mx-auto mb-1 ${
-                      activeTab === index ? 'text-orange-600 dark:text-orange-400' : 'text-gray-600 dark:text-gray-400'
-                    }`} />
-                    <div className={`text-xs font-medium ${
-                      activeTab === index ? 'text-orange-700 dark:text-orange-300' : 'text-gray-700 dark:text-gray-300'
-                    }`}>
-                      {tab.title}
-                    </div>
-                  </button>
-                )
-              })}
-            </div>
-            
-            {/* Desktop list view */}
-            <div className="hidden lg:block space-y-2">
-              {architectureTabs.map((tab, index) => {
-                const TabIcon = tab.icon
-                return (
-                  <button
-                    key={index}
-                    onClick={() => setActiveTab(index)}
-                    className={`w-full text-left p-4 rounded-lg transition-all ${
-                      activeTab === index
-                        ? 'bg-orange-100 dark:bg-orange-900/30 border-l-4 border-orange-600'
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <TabIcon className={`w-5 h-5 ${
-                          activeTab === index ? 'text-orange-600 dark:text-orange-400' : 'text-gray-600 dark:text-gray-400'
-                        }`} />
-                        <div className={`font-medium ${
-                          activeTab === index ? 'text-orange-700 dark:text-orange-300' : 'text-gray-700 dark:text-gray-300'
-                        }`}>
-                          {tab.title}
-                        </div>
+        {/* Two Column Architecture Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {architectureComponents.map((component, index) => {
+            const Icon = component.icon
+            const isLastItem = index === architectureComponents.length - 1
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`relative ${isLastItem ? 'md:col-span-2' : ''}`}
+              >
+                <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 overflow-hidden h-full">
+                  {/* Orange accent bar */}
+                  <div className="h-1 bg-gradient-to-r from-orange-400 to-orange-600" />
+
+                  <div className="p-8">
+                    {/* Header with aligned icon and title */}
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/30 flex-shrink-0">
+                        <Icon className="w-8 h-8 text-orange-600 dark:text-orange-400" />
                       </div>
-                      {activeTab === index && (
-                        <ArrowRight className="w-5 h-5 text-orange-600 dark:text-orange-400" />
-                      )}
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {component.title}
+                      </h3>
                     </div>
-                  </button>
-                )
-              })}
-            </div>
-          </motion.div>
 
-          {/* Tab Content */}
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="lg:col-span-2"
-          >
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-800">
-              <div className="flex items-center gap-3 mb-4">
-                <Icon className="w-8 h-8 text-orange-600 dark:text-orange-400" />
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {currentTab.title}
-                </h3>
-              </div>
-              
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                {currentTab.content}
-              </p>
-              
-              <div className="grid sm:grid-cols-2 gap-4">
-                {currentTab.features.map((feature, idx) => (
-                  <div key={idx} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
-                    <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">{feature.label}</div>
-                    <div className="text-lg font-semibold text-orange-600 dark:text-orange-400">{feature.value}</div>
+                    {/* Main Content */}
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {component.mainContent}
+                    </p>
                   </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
-
-        {/* Blockchain Support */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4 }}
-          className="mt-12 bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-800"
-        >
-          <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Supported Networks & Tokens</h3>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-4">Blockchains</h4>
-              <div className="grid grid-cols-2 gap-3">
-                {['Ethereum', 'Bitcoin', 'Solana', 'Tron', 'Polygon', 'BNB', 'Avalanche'].map((chain) => (
-                  <div key={chain} className="flex items-center gap-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-800">
-                    <Network className="w-4 h-4 text-orange-500" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">{chain}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-4">Tokens</h4>
-              <div className="grid grid-cols-3 gap-3">
-                {['USDT', 'USDC', 'EURC', 'BTC', 'ETH', 'WETH', 'WBTC', 'POL', 'BNB', 'SOL', 'TRX', 'DAI', 'More...'].map((token) => (
-                  <div key={token} className="flex items-center gap-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-800">
-                    <DollarSign className="w-4 h-4 text-orange-500" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">{token}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
 }
 
-// Section 3: Features & Implementation
-function FeaturesSection() {
+// Section 3: Implementation & Developer Experience
+function ImplementationSection() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  const features = [
-    {
-      icon: Globe,
-      title: "Cross-Currency Pricing",
-      description: "Price items in USD, EUR, ETH, or BTC. Customers pay in any supported token with automatic conversion to merchant's preferred payout currency.",
-      highlight: "Universal pricing"
-    },
-    {
-      icon: Zap,
-      title: "Instant Settlement",
-      description: "Direct payment to merchant wallets. No intermediary custody, no settlement delays.",
-      highlight: "<15s settlement time"
-    },
-    {
-      icon: Shield,
-      title: "100% Non-Custodial",
-      description: "Merchants maintain complete control. Payments flow directly to their wallets.",
-      highlight: "Full control"
-    },
-    {
-      icon: Link2,
-      title: "One-Click Integration",
-      description: "Simple API integration with comprehensive SDKs. Embed checkout or redirect seamlessly.",
-      highlight: "5 minute setup"
-    },
-    {
-      icon: RefreshCw,
-      title: "Auto-Conversion",
-      description: "Automatic on-chain conversion to merchant's preferred payout currency with Chainlink price feeds.",
-      highlight: "No manual conversion"
-    },
-    {
-      icon: Lock,
-      title: "Enterprise Security",
-      description: "Multi-signature wallets, on-chain audit trails, and compliance-ready infrastructure.",
-      highlight: "Verifiable audit trail"
-    }
-  ]
 
   const implementations = [
     {
@@ -426,34 +266,8 @@ function FeaturesSection() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            Features & Impact
+            Live Implementations
           </h2>
-        </motion.div>
-
-        {/* Key Features Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
-        >
-          {features.map((feature, index) => {
-            const Icon = feature.icon
-            return (
-              <div key={index} className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-800 hover:scale-105 transition-transform">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
-                    <Icon className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">{feature.title}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{feature.description}</p>
-                    <span className="text-xs font-medium text-orange-600 dark:text-orange-400">{feature.highlight}</span>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
         </motion.div>
 
         {/* Implementation Examples */}
@@ -463,7 +277,6 @@ function FeaturesSection() {
           transition={{ delay: 0.4 }}
           className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-8 mb-12"
         >
-          <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Live Implementations</h3>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {implementations.map((impl, index) => (
               <div key={index} className="bg-white dark:bg-gray-900 rounded-lg p-6">
@@ -522,6 +335,41 @@ app.`}<span className="text-yellow-300">post</span>{`(`}<span className="text-gr
   res.`}<span className="text-yellow-300">json</span>{`({ `}<span className="text-cyan-300">received</span>{`: `}<span className="text-blue-400">true</span>{` });
 });`}</code>
               </pre>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Supported Networks & Tokens */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.55 }}
+          className="bg-white dark:bg-gray-900 rounded-xl p-8 mb-12 shadow-lg border border-gray-200 dark:border-gray-800"
+        >
+          <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Supported Networks & Tokens</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-4">Blockchains</h4>
+              <div className="grid grid-cols-2 gap-3">
+                {['Ethereum', 'Bitcoin', 'Solana', 'Tron', 'Polygon', 'BNB', 'Avalanche'].map((chain) => (
+                  <div key={chain} className="flex items-center gap-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-800">
+                    <Network className="w-4 h-4 text-orange-500" />
+                    <span className="text-sm text-gray-700 dark:text-gray-300">{chain}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-4">Tokens</h4>
+              <div className="grid grid-cols-3 gap-3">
+                {['USDT', 'USDC', 'EURC', 'BTC', 'ETH', 'WETH', 'WBTC', 'POL', 'BNB', 'SOL', 'TRX', 'DAI', 'More...'].map((token) => (
+                  <div key={token} className="flex items-center gap-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-800">
+                    <DollarSign className="w-4 h-4 text-orange-500" />
+                    <span className="text-sm text-gray-700 dark:text-gray-300">{token}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
@@ -586,7 +434,7 @@ export default function CoinCheckoutProject() {
             style={{ overflow: 'hidden' }}
           >
             <ArchitectureSection />
-            <FeaturesSection />
+            <ImplementationSection />
           </motion.div>
         )}
       </AnimatePresence>

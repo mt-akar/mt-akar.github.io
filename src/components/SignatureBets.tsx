@@ -12,8 +12,8 @@ const bets = [
   },
   {
     title: "Blockchain becomes invisible infrastructure",
-    description: "The revolution already happened, you just didn't notice because you were busy screenshotting NFT apes. Your grandma beat you to Web3.",
-    callToAction: "Build the experience, not the buzzwords."
+    description: "The revolution already happened, you just didn't notice because you were busy screenshotting NFT apes. Your coffee shop beat you to Web3.",
+    callToAction: "Start building blockchain-first, now."
   },
   {
     title: "You're underusing AI",
@@ -21,8 +21,8 @@ const bets = [
     callToAction: "Build AI into the daily loop, not just the sprint planning."
   },
   {
-    title: "4-day work week is inevitable",
-    description: "Remember when remote work was 'impossible'? The 4-day week is the same movie, different sequel. The future has two schools of thought: Monday Mikes and Friday Freddies. Pick your poison.",
+    title: "Your best work happens before lunch",
+    description: "After lunch you're just rearranging deck chairs on the Titanic. You know it, your commit history knows it. Parkinson's Law isn't a suggestion, it's a prophecy.",
     callToAction: "Work smarter, live fuller, ship faster."
   },
 ];

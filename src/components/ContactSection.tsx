@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import SectionTitle from './SectionTitle';
 
 export default function ContactSection() {
@@ -58,24 +59,24 @@ export default function ContactSection() {
           }}
         >
           {/* Build Together Card */}
-          <div 
-            className={`relative group cursor-pointer ${
+          <Link
+            href="/contact"
+            className={`relative block group ${
               selectedPath === 'build' ? 'ring-2 ring-cyan-400' : ''
             }`}
-            onClick={() => setSelectedPath('build')}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-600/10 rounded-2xl transition-all duration-300 group-hover:from-cyan-400/20 group-hover:to-blue-600/20" />
-            
+
             <div className="relative p-8 space-y-4">
               {/* Icon placeholder */}
               <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-cyan-400/20 to-blue-600/20 flex items-center justify-center">
                 <div className="w-8 h-8 bg-cyan-400/30 rounded" />
               </div>
-              
+
               <h3 className="text-2xl font-bold text-white">
                 Build Together
               </h3>
-              
+
               <p className="text-gray-400">
                 Advisory, consulting, or hands-on development. Let's architect something remarkable.
               </p>
@@ -87,27 +88,27 @@ export default function ContactSection() {
                 </span>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Invite to Speak Card */}
-          <div 
-            className={`relative group cursor-pointer ${
+          <Link
+            href="/speaking"
+            className={`relative block group ${
               selectedPath === 'speak' ? 'ring-2 ring-violet-600' : ''
             }`}
-            onClick={() => setSelectedPath('speak')}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-violet-600/10 to-purple-600/10 rounded-2xl transition-all duration-300 group-hover:from-violet-600/20 group-hover:to-purple-600/20" />
-            
+
             <div className="relative p-8 space-y-4">
               {/* Icon placeholder */}
               <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-violet-600/20 to-purple-600/20 flex items-center justify-center">
                 <div className="w-8 h-8 bg-violet-600/30 rounded" />
               </div>
-              
+
               <h3 className="text-2xl font-bold text-white">
                 Invite to Speak
               </h3>
-              
+
               <p className="text-gray-400">
                 Conferences, podcasts, or team sessions. I share insights on tech, leadership, and building.
               </p>
@@ -119,7 +120,7 @@ export default function ContactSection() {
                 </span>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Contact Form / Details (appears when a path is selected) */}

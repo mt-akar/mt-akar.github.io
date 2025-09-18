@@ -218,13 +218,6 @@ export default function ProjectsPage() {
     <>
       <Header />
       <main ref={containerRef} className="min-h-screen">
-        {/* Progress Indicator */}
-        <motion.div
-          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-violet-600 to-pink-600 z-50 origin-left"
-          style={{ scaleX: scrollYProgress }}
-        />
-      
-      
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden">
         <div className="absolute inset-0 -z-10">
