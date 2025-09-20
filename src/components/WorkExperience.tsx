@@ -28,7 +28,7 @@ const experiences: Experience[] = [
     logo: '/icons/kinesis.svg',
     highlights: [
       'Co-designed the data center management suite responsible for resource orchestration, auto-scaling, usage monitoring, security, and observability for Kinesis\' decentralized cloud infra.',
-      'Satisfied stakeholders by maintaining 50+ key metrics in real-time on the Kinesis Explorer website by building a block interpreter for Kinesis Protocol on Base Network.',
+      'Kept stakeholders well-informed with 50+ real-time key metrics on the Kinesis Explorer website by building a block interpreter and data ingestion pipeline for Kinesis Protocol on Base Network.',
       'Conceived the Kinesis SDK for better developer experience and to promote ecosystem expansion.',
     ],
     languages: ['Solidity', 'Go', 'C#', 'Rust', 'TypeScript', 'Python'],
