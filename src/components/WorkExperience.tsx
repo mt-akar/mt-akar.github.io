@@ -27,8 +27,8 @@ const experiences: Experience[] = [
     period: '05/2024 - Current',
     logo: '/icons/kinesis.svg',
     highlights: [
-      'Co-designed the data center management suite responsible for resource orchestration, auto-scaling, usage monitoring, security, and observability for Kinesis\' decentralized cloud infra.',
-      'Kept stakeholders well-informed with 50+ real-time key metrics on the Kinesis Explorer website by building a block interpreter and data ingestion pipeline for Kinesis Protocol on Base Network.',
+      'Co-designed the data center management suite responsible for resource orchestration, auto-scaling, usage monitoring, security, and observability for Kinesis\' decentralized cloud infrastructure.',
+      'Kept stakeholders well-informed by maintaining 50+ real-time key metrics on the Kinesis Explorer website by building a block interpreter and data ingestion pipeline for Kinesis Protocol on Base Network.',
       'Conceived the Kinesis SDK for better developer experience and to promote ecosystem expansion.',
     ],
     languages: ['Solidity', 'Go', 'C#', 'Rust', 'TypeScript', 'Python'],
@@ -72,9 +72,10 @@ const experiences: Experience[] = [
     period: '08/2021 - 05/2022',
     logo: '/icons/testmaker.png',
     highlights: [
-      'Designed and implemented a fully interactive test page typesetting experience using Angular and ASP.NET.',
+      'Built a cloud-native multiple-choice-test typesetting app, replacing Adobe Illustrator for this in-demand use case, and sold subscriptions to 50+ experts, starting with Albiders’.',
+      'Designed and implemented the application using Angular and ASP.NET.',
       'Orchestrated multi-stage CI/CD pipelines by containerizing all microservices using Docker and Azure Container Apps.',
-      'Facilitated diagnosis by setting up structured logging using Serilog and Azure Monitor'
+      'Facilitated diagnosis by setting up structured logging using Serilog and Azure Monitor.'
     ],
     languages: ['JavaScript', 'TypeScript', 'C#'],
     tech: ['Docker', 'Microservices', 'Azure DevOps', 'MSSQL', 'Angular'],
@@ -89,7 +90,7 @@ const experiences: Experience[] = [
     period: '08/2020 - 05/2021',
     logo: '/icons/albiders.svg',
     highlights: [
-      'Founded EdTech startup and led cross-functional team of 17 (engineers, designers, educators, content creators) while managing diverse stakeholders from investors to educational specialists.',
+      'Founded an AI-powered EdTech startup and led a cross-functional team of 17 (engineers, designers, educators, content creators) while managing diverse stakeholders from investors to educational specialists.',
       'Managed 3 freelance engineers through Waterfall methodology, developing backend with ASP.NET, MSSQL, and Azure Web App.',
       'Expanded platform to mobile by developing native Android app with offline video playback, picture-in-picture mode, and push notifications using Kotlin.',
       'Eliminated manual test syncing (~3 minutes/test) for students by building a computer vision module using OpenCV and Java to automatically scan and grade papers via mobile camera.',

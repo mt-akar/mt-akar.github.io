@@ -74,6 +74,7 @@ const achievementCertifications: Certification[] = [
     issuer: 'Nvidia',
     date: '04/2018',
     icon: Code,
+    verificationUrl: 'https://learn.nvidia.com/certificates?id=daaea69d347b4a3197f5f3d12524b281',
     eligibility: 'Proficiency in training convolutional neural networks.',
     note: 'Nvidia discontinued verification of this certificate'
   }
