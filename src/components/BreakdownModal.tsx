@@ -115,7 +115,7 @@ export default function BreakdownModal({ isOpen, onClose }: BreakdownModalProps)
             {
               calculation: 'Zero-fee donation infrastructure value',
               value: '$200,000',
-              description: 'Platform enabling direct wallet-to-wallet charitable giving. 8 verified charities, $10K+ donations facilitated, 100% self-custodial.'
+              description: 'Platform enabling direct wallet-to-wallet charitable giving. 8 verified charities, $100K+ donations facilitated, 100% self-custodial.'
             }
           ]
         },

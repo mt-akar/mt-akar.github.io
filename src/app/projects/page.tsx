@@ -252,8 +252,10 @@ export default function ProjectsPage() {
       {/* Project Sections */}
       {sections.map((section, index) => {
         const Component = section.component
+        // Create id from section name (e.g., "Cointribute" becomes "cointribute")
+        const sectionId = section.name.toLowerCase().replace(/\s+/g, '-')
         return (
-          <div key={section.name} id={`section-${index}`}>
+          <div key={section.name} id={sectionId}>
             <Component />
           </div>
         )

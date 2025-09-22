@@ -240,7 +240,7 @@ function ImplementationSection() {
     {
       title: "Cointribute Integration",
       description: "Powering crypto donations for charities with 0% commission structure",
-      stats: { charities: "8+", volume: "$10K+", donors: "15+" }
+      stats: { charities: "8+", volume: "$100K+", donors: "150+" }
     },
     {
       title: "E-commerce Platforms",

@@ -2,9 +2,9 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Briefcase, GraduationCap, Code, Shield, Heart, Rocket, Award } from 'lucide-react'
+import { ArrowRight, Briefcase, GraduationCap, Code, Shield, Heart, Rocket, Award, MessageCircle, Mic } from 'lucide-react'
 
-export type CardId = 'skills' | 'education' | 'projects' | 'certificates' | 'voluntary' | 'experience'
+export type CardId = 'skills' | 'education' | 'projects' | 'certificates' | 'voluntary' | 'experience' | 'speaking' | 'contact'
 
 interface CTACard {
   id: CardId
@@ -92,6 +92,30 @@ const allCards: Record<CardId, CTACard> = {
     iconColor: 'text-indigo-600 dark:text-indigo-400',
     textColor: 'text-indigo-600 dark:text-indigo-400',
     linkText: 'View Experience'
+  },
+  speaking: {
+    id: 'speaking',
+    href: '/speaking',
+    icon: Mic,
+    title: 'Speaking',
+    description: 'Keynotes, workshops, and thought leadership',
+    gradient: 'from-purple-400/10 to-pink-600/10',
+    hoverGradient: 'from-purple-400/20 to-pink-600/20',
+    iconColor: 'text-purple-600 dark:text-purple-400',
+    textColor: 'text-purple-600 dark:text-purple-400',
+    linkText: 'View Speaking'
+  },
+  contact: {
+    id: 'contact',
+    href: '/contact',
+    icon: MessageCircle,
+    title: 'Contact',
+    description: 'Let\'s connect and create something amazing',
+    gradient: 'from-green-400/10 to-emerald-600/10',
+    hoverGradient: 'from-green-400/20 to-emerald-600/20',
+    iconColor: 'text-green-600 dark:text-green-400',
+    textColor: 'text-green-600 dark:text-green-400',
+    linkText: 'Get in Touch'
   }
 }
 
@@ -175,7 +199,7 @@ export const continueExploringPresets = {
   },
   education: {
     subtitle: undefined,
-    cardIds: ['projects', 'certificates', 'voluntary'] as CardId[]
+    cardIds: ['skills', 'experience', 'certificates'] as CardId[]
   },
   certificates: {
     subtitle: undefined,
@@ -183,10 +207,14 @@ export const continueExploringPresets = {
   },
   projects: {
     subtitle: 'Explore more of my journey',
-    cardIds: ['skills', 'experience', 'voluntary'] as CardId[]
+    cardIds: ['experience', 'education', 'voluntary'] as CardId[]
   },
   coolIdeas: {
     subtitle: 'Explore more insights and innovations',
     cardIds: ['projects', 'experience', 'skills'] as CardId[]
+  },
+  voluntary: {
+    subtitle: 'Continue exploring the journey',
+    cardIds: ['projects', 'speaking', 'contact'] as CardId[]
   }
 }

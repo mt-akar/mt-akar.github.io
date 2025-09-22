@@ -67,11 +67,11 @@ function HeroSection() {
                 <div className="text-sm text-gray-600 dark:text-gray-400">Verified Charities</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">$10K+</div>
+                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">$100K+</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Donations Mediated</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">15+</div>
+                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">150+</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Donors</div>
               </div>
             </div>
