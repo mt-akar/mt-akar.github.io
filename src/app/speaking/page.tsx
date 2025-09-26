@@ -235,6 +235,7 @@ export default function SpeakingPage() {
         </section>
 
         {/* Past Speeches & Appearances Gallery */}
+        {/*
         <section className="relative py-16" ref={galleryRef}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <motion.div
@@ -249,6 +250,7 @@ export default function SpeakingPage() {
             </motion.div>
 
             {/* Gallery Grid */}
+            {/*
             <div className="relative">
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 {currentAppearances.map((appearance, index) => (
@@ -261,7 +263,9 @@ export default function SpeakingPage() {
                     onClick={() => setSelectedAppearance(appearance.id)}
                   >
                     <div className="relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-cyan-400/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]">
+                    */}
                       {/* Image Placeholder */}
+                      {/*
                       <div className="relative h-48 bg-gradient-to-br from-cyan-400/20 to-violet-600/20 overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
                         {appearance.videoUrl && (
@@ -281,8 +285,10 @@ export default function SpeakingPage() {
                           className="absolute inset-0 bg-gradient-to-br from-cyan-400/30 to-violet-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                         />
                       </div>
+                      */}
 
                       {/* Content */}
+                      {/*
                       <div className="p-5">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="px-2 py-1 bg-cyan-400/10 text-cyan-400 text-xs rounded-full">
@@ -314,8 +320,10 @@ export default function SpeakingPage() {
                   </motion.div>
                 ))}
               </div>
+              */}
 
               {/* Pagination Controls */}
+              {/*
               <div className="flex items-center justify-center gap-4">
                 <button
                   onClick={prevGalleryPage}
@@ -351,8 +359,10 @@ export default function SpeakingPage() {
             </div>
           </div>
         </section>
+        */}
 
         {/* Modal for selected appearance */}
+        {/*
         <AnimatePresence>
           {selectedAppearance && (
             <motion.div
@@ -435,6 +445,7 @@ export default function SpeakingPage() {
             </motion.div>
           )}
         </AnimatePresence>
+        */}
 
         {/* Book a Speaking Engagement Form */}
         <section className="relative py-16" ref={formRef}>
